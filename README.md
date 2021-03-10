@@ -1,5 +1,5 @@
 
-## Resumo
+# Resumo
 Um projeto de cadastro de clientes para o grupo World Beauty (WB), que fornece serviços ao publico feminino e masculino de beleza em diferentes pequenas unidades espalhadas por várias cidades no país.
 
 # Requisitos Funcionais
@@ -18,8 +18,8 @@ Um projeto de cadastro de clientes para o grupo World Beauty (WB), que fornece s
     - Qual é a idade média do público para um determinado gênero.
     - Qual é o serviço mais procurado para todo o público.
     - Qual é o serviço mais procurado para um determinado gênero.
-- Capacidade de persistência de dados. A agenda deverá ser salva em um arquivo em disco rígido, como acontece com a maioria dos softwares existentes em mercado.
 
 # Requisitos Técnicos
 - Será executado em linhas de comando.
 - Deverá funcionar em Linux, Windows e IOS.
+- Capacidade de persistência de dados. A agenda deverá ser salva em um arquivo em disco rígido.
