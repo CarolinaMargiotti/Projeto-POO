@@ -20,6 +20,6 @@ Um projeto de cadastro de clientes para o grupo World Beauty (WB), que fornece s
     - Qual é o serviço mais procurado para um determinado gênero.
 
 # Requisitos Técnicos
-- Será executado em linhas de comando.
+- Será executado em web.
 - Deverá funcionar em Linux, Windows e IOS.
-- Capacidade de persistência de dados. A agenda deverá ser salva em um arquivo em disco rígido.
+- Capacidade de persistência de dados, banco de dados.
