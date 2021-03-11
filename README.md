@@ -1,4 +1,15 @@
 
+
+### Team  ###
+CAROLINA MARGIOTTI DE ABREU
+GABRIEL FERREIRA FABIAN
+JOAO VITOR DE PAULA RODRIGUES MACHADO
+LUCAS VINICIUS DOS SANTOS ALMEIDA
+MAYCON RAFAEL CRUZ SILVA
+NICOLAS SOARES TELLES
+PEDRO SOUSA LOPES
+
+
 # Resumo
 Um projeto de cadastro de clientes para o grupo World Beauty (WB), que fornece serviços ao publico feminino e masculino de beleza em diferentes pequenas unidades espalhadas por várias cidades no país.
 
