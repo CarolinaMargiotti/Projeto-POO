@@ -3,6 +3,7 @@ package com.jerso.projetopoo.model.cliente;
 import com.jerso.projetopoo.model.unidade.Produto;
 import com.jerso.projetopoo.model.unidade.Servico;
 import java.time.LocalDate;
+import java.time.Period;
 import java.util.List;
 
 public class Cliente{
@@ -12,7 +13,7 @@ public class Cliente{
     private LocalDate _dataNascimento;
     private Telefone _tel;
     private List<Produto> _listaProdutos;
-    private List<Servico> _listaServico;
+    private List<Servico> _listaServicos;
 
     Cliente(String nome, String genero, LocalDate dataNascimento, Telefone tel){
         this._nome=nome;
@@ -67,6 +68,31 @@ public class Cliente{
 
     public LocalDate GetDataNascimento(){
         return _dataNascimento;
+    }
+
+    public Telefone GetTelefone(){
+        return this._tel;
+    }
+
+    //Deletes
+
+    public void RemoveProduto(Produto prod){
+        _listaProdutos.remove(prod);
+    }
+
+    public void RemoveServico(Servico servico){
+        _listaServicos.remove(servico);
+    }
+
+    // Outros
+
+    public bool ProdutoExists(Produto prod){
+        if(_listaProdutos.indexOf(prod)!=-1) return true;
+        else return false;
+    }
+
+    public int GetIdade(){
+        return Period.between(_dataNascimento, now);
     }
 
 }
