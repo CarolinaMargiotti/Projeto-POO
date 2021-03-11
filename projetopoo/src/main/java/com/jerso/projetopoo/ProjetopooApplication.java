@@ -1,4 +1,4 @@
-package com.jeRso.projetopoo.controller;
+package com.jerso.projetopoo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
