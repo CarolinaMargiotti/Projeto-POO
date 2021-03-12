@@ -1,32 +1,37 @@
 package com.jerso.projetopoo.model.unidade;
 
-public class Servico{
+import javax.persistence.*;
+
+public class Servico {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long _id;
     private String _nome;
     private String _genero;
 
-    Servico(String nome, String genero){
-        this._nome=nome;
-        this._genero=genero;
+    Servico(String nome, String genero) {
+        this._nome = nome;
+        this._genero = genero;
     }
 
-    //Setters
+    // Setters
 
-    public void SetNome(String nome){
-        this._nome=nome;
+    public void SetNome(String nome) {
+        this._nome = nome;
     }
 
-    public void SetGenero(String genero){
-        this._genero=genero;
+    public void SetGenero(String genero) {
+        this._genero = genero;
     }
 
-    //Getters
+    // Getters
 
-    public String GetNome(){
+    public String GetNome() {
         return _nome;
     }
 
-    public String GetGenero(){
+    public String GetGenero() {
         return _genero;
     }
 }

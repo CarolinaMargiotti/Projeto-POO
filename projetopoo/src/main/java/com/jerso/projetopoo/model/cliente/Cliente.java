@@ -5,8 +5,12 @@ import com.jerso.projetopoo.model.unidade.Servico;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.List;
+import javax.persistence.*;
 
-public class Cliente{
+public class Cliente {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long _id;
     private String _nome;
     private String _genero;
@@ -15,84 +19,86 @@ public class Cliente{
     private List<Produto> _listaProdutos;
     private List<Servico> _listaServicos;
 
-    Cliente(String nome, String genero, LocalDate dataNascimento, Telefone tel){
-        this._nome=nome;
-        this._genero=genero;
-        this._dataNascimento=dataNascimento;
-        this._tel=tel;
+    Cliente(String nome, String genero, LocalDate dataNascimento, Telefone tel) {
+        this._nome = nome;
+        this._genero = genero;
+        this._dataNascimento = dataNascimento;
+        this._tel = tel;
     }
 
-    //Setters
+    // Setters
 
-    public void AddProduto(Produto produto){
+    public void AddProduto(Produto produto) {
         _listaProdutos.add(produto);
     }
 
-    public void AddServico(Servico servico){
+    public void AddServico(Servico servico) {
         _listaServicos.add(servico);
     }
 
-    public void SetNome(String nome){
-        this._nome=nome;
+    public void SetNome(String nome) {
+        this._nome = nome;
     }
 
-    public void SetGenero(String genero){
-        this._genero=genero;
+    public void SetGenero(String genero) {
+        this._genero = genero;
     }
 
-    public void SetDataNascimento(LocalDate dataNascimento){
-        this._dataNascimento=dataNascimento;
+    public void SetDataNascimento(LocalDate dataNascimento) {
+        this._dataNascimento = dataNascimento;
     }
 
-    public void SetTel(Telefone tel){
-        this._tel=tel;
+    public void SetTel(Telefone tel) {
+        this._tel = tel;
     }
 
-    //Getters
+    // Getters
 
-    public List<Produto> GetListaProdutos(){
+    public List<Produto> GetListaProdutos() {
         return _listaProdutos;
     }
 
-    public List<Servico> GetListaServicos(){
+    public List<Servico> GetListaServicos() {
         return _listaServicos;
     }
 
-    public String GetNome(){
+    public String GetNome() {
         return _nome;
     }
 
-    public String GetGenero(){
+    public String GetGenero() {
         return _genero;
     }
 
-    public LocalDate GetDataNascimento(){
+    public LocalDate GetDataNascimento() {
         return _dataNascimento;
     }
 
-    public Telefone GetTelefone(){
+    public Telefone GetTelefone() {
         return this._tel;
     }
 
-    //Deletes
+    // Deletes
 
-    public void RemoveProduto(Produto prod){
+    public void RemoveProduto(Produto prod) {
         _listaProdutos.remove(prod);
     }
 
-    public void RemoveServico(Servico servico){
+    public void RemoveServico(Servico servico) {
         _listaServicos.remove(servico);
     }
 
     // Outros
 
-    public bool ProdutoExists(Produto prod){
-        if(_listaProdutos.indexOf(prod)!=-1) return true;
-        else return false;
+    public boolean ProdutoExists(Produto prod) {
+        if (_listaProdutos.indexOf(prod) != -1)
+            return true;
+        else
+            return false;
     }
 
-    public int GetIdade(){
-        return Period.between(_dataNascimento, now);
+    public int GetIdade() {
+        return Period.between(_dataNascimento, LocalDate.now()).getYears();
     }
 
 }
