@@ -5,21 +5,18 @@ import com.jerso.projetopoo.model.unidade.Servico;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.List;
-import javax.persistence.*;
 
 public class Cliente {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long _id;
     private String _nome;
     private String _genero;
     private LocalDate _dataNascimento;
-    private Telefone _tel;
+    private String _tel;
     private List<Produto> _listaProdutos;
     private List<Servico> _listaServicos;
 
-    Cliente(String nome, String genero, LocalDate dataNascimento, Telefone tel) {
+    Cliente(String nome, String genero, LocalDate dataNascimento, String tel) {
         this._nome = nome;
         this._genero = genero;
         this._dataNascimento = dataNascimento;
@@ -48,7 +45,7 @@ public class Cliente {
         this._dataNascimento = dataNascimento;
     }
 
-    public void SetTel(Telefone tel) {
+    public void SetTel(String tel) {
         this._tel = tel;
     }
 
@@ -74,7 +71,7 @@ public class Cliente {
         return _dataNascimento;
     }
 
-    public Telefone GetTelefone() {
+    public String GetTelefone() {
         return this._tel;
     }
 

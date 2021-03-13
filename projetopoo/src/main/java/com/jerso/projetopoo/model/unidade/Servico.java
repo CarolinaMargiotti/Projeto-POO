@@ -1,11 +1,7 @@
 package com.jerso.projetopoo.model.unidade;
 
-import javax.persistence.*;
-
 public class Servico {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long _id;
     private String _nome;
     private String _genero;

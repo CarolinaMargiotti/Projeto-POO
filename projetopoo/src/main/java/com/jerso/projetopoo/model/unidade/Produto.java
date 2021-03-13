@@ -2,12 +2,9 @@ package com.jerso.projetopoo.model.unidade;
 
 import java.time.LocalDate;
 import java.util.Set;
-import javax.persistence.*;
 
 public class Produto {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long _id;
     private String _nome;
     private String _marca;
