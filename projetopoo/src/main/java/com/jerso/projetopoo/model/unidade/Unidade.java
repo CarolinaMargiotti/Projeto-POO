@@ -17,6 +17,10 @@ public class Unidade {
         this._cep = cep;
     }
 
+    public Long GetIDUnidade() {
+        return _idUnidade;
+    }
+
     public void AddCliente(Cliente c) {
         _cliente.AddCliente(c);
     }
