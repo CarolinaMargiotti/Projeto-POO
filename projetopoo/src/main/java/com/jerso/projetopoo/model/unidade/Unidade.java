@@ -3,11 +3,17 @@ package com.jerso.projetopoo.model.unidade;
 import com.jerso.projetopoo.model.cliente.*;
 import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.CollectionTable;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Unidade {
@@ -15,13 +21,22 @@ public class Unidade {
     @Id()
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long _idUnidade;
+
     @Column()
     private String _cep;
-    @Column()
+
+    @ElementCollection
+    @CollectionTable(name = "_listaServicos", joinColumns = @JoinColumn(name = "_idUnidade"))
+    @Column(name = "_listaServicos")
     private List<Servico> _listaServicos;
-    @Column()
+
+    @ElementCollection
+    @CollectionTable(name = "_listaProdutos", joinColumns = @JoinColumn(name = "_idUnidade"))
+    @Column(name = "_listaProdutos")
     private List<Produto> _listaProdutos;
 
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "_idUnidade")
     private Clientes _cliente;
 
     Unidade(Long idUnidade, String cep) {

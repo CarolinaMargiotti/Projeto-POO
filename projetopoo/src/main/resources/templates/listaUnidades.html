@@ -8,8 +8,9 @@
 </head>
 
 <body>
-    <tr th:each="Unidade:${_listaUnidades}">
+    <tr th:each="unidade:${unidades}">
         <td th:text="${unidade.GetIDUnidade()}"></td>
+        <td th:text="${unidade.GetCep()}"></td>
     </tr>
 </body>
 
