@@ -1,19 +1,44 @@
 package com.jerso.projetopoo.model.cliente;
 
-import com.jerso.projetopoo.model.unidade.Produto;
-import com.jerso.projetopoo.model.unidade.Servico;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.List;
 
+import javax.persistence.CollectionTable;
+import javax.persistence.Column;
+import javax.persistence.ElementCollection;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+
+import com.jerso.projetopoo.model.unidade.Produto;
+import com.jerso.projetopoo.model.unidade.Servico;
+
+@Entity
 public class Cliente {
 
+    @Id()
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long _id;
+    @Column
     private String _nome;
+    @Column
     private String _genero;
+    @Column
     private LocalDate _dataNascimento;
+    @Column
     private String _tel;
+
+    @ElementCollection
+    @CollectionTable(name = "_listaProdutosCliente", joinColumns = @JoinColumn(name = "_idUnidade"))
+    @Column(name = "_listaProdutosCliente")
     private List<Produto> _listaProdutos;
+
+    @ElementCollection
+    @CollectionTable(name = "_listaServicosCliente", joinColumns = @JoinColumn(name = "_idUnidade"))
+    @Column(name = "_listaServicosCliente")
     private List<Servico> _listaServicos;
 
     Cliente(String nome, String genero, LocalDate dataNascimento, String tel) {

@@ -1,10 +1,20 @@
 package com.jerso.projetopoo.model.cliente;
 
 import java.util.List;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
+import javax.persistence.CollectionTable;
+import javax.persistence.Column;
+import javax.persistence.ElementCollection;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+
+@Entity
 public class Clientes {
+
+    @ElementCollection
+    @CollectionTable(name = "_listaClientes", joinColumns = @JoinColumn(name = "_idUnidade"))
+    @Column(name = "_listaClientes")
     private List<Cliente> _listaClientes;
 
     public void AddCliente(Cliente cliente) {

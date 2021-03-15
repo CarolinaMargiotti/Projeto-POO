@@ -3,12 +3,26 @@ package com.jerso.projetopoo.model.unidade;
 import java.time.LocalDate;
 import java.util.Set;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Column;
+import javax.persistence.Id;
+
+@Entity
 public class Produto {
 
+    @Id()
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long _id;
+
+    @Column
     private String _nome;
+    @Column
     private String _marca;
+    @Column(nullable = true)
     private LocalDate _diaConsumido = null;
+    @Column
     private float _preco;
 
     Produto(String nome, String marca, LocalDate diaConsumido, float preco) {
