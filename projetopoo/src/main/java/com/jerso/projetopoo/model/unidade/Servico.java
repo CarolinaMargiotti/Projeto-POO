@@ -21,7 +21,7 @@ public class Servico {
     @Column
     private String _genero;
 
-    Servico(String nome, String genero) {
+    public Servico(String nome, String genero) {
         this._nome = nome;
         this._genero = genero;
     }

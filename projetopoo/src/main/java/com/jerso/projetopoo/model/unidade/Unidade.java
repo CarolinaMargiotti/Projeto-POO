@@ -38,7 +38,7 @@ public class Unidade {
     @JoinColumn(name = "_idUnidade")
     private Clientes _cliente;
 
-    Unidade(Long idUnidade, String cep) {
+    public Unidade(Long idUnidade, String cep) {
         this._idUnidade = idUnidade;
         this._cep = cep;
     }

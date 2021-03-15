@@ -41,7 +41,7 @@ public class Cliente {
     @Column(name = "_listaServicosCliente")
     private List<Servico> _listaServicos;
 
-    Cliente(String nome, String genero, LocalDate dataNascimento, String tel) {
+    public Cliente(String nome, String genero, LocalDate dataNascimento, String tel) {
         this._nome = nome;
         this._genero = genero;
         this._dataNascimento = dataNascimento;

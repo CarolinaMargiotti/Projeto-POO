@@ -25,7 +25,7 @@ public class Produto {
     @Column
     private float _preco;
 
-    Produto(String nome, String marca, LocalDate diaConsumido, float preco) {
+    public Produto(String nome, String marca, LocalDate diaConsumido, float preco) {
         this._nome = nome;
         this._marca = marca;
         this._diaConsumido = diaConsumido;
