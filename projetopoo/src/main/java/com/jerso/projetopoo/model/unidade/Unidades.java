@@ -11,7 +11,7 @@ public class Unidades {
     private List<Unidade> _listaUnidades;
 
     
-    //funções
+    //funções da classe
 
     public void AddUnidades(Unidade u){
         _listaUnidades.add(u);
