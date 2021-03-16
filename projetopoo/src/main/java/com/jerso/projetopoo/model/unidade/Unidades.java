@@ -13,13 +13,7 @@ public class Unidades {
     
     //teste de commits
     
-    public void AddUnidades(Unidade u){
-        _listaUnidades.add(u);
-    }
 
-     public void RemoveUnidades(Unidade u){
-        _listaUnidades.remove(u);
-    }
 
 }
 
