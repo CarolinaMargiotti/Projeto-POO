@@ -10,6 +10,16 @@
 <body>
     <h1>Teste</h1>
 
+    <form th:action="@{/cadastrar-unidade}" method="post">
+        <div class="form-group">
+            <label for="exampleFormControlInput1">CEP</label>
+            <input type="text" name="cep" class="form-control" placeholder="57042-010">
+            <input type="submit" />
+        </div>
+    </form>
+
+    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
 </body>
 
 </html>

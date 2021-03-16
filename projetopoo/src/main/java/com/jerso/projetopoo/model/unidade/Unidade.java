@@ -26,20 +26,19 @@ public class Unidade {
 
     @ElementCollection
     @CollectionTable(name = "_listaServicos", joinColumns = @JoinColumn(name = "_idUnidade"))
-    @Column(name = "_listaServicos")
+    @Column(name = "_listaServicos", nullable = true)
     private List<Servico> _listaServicos;
 
     @ElementCollection
     @CollectionTable(name = "_listaProdutos", joinColumns = @JoinColumn(name = "_idUnidade"))
-    @Column(name = "_listaProdutos")
+    @Column(name = "_listaProdutos", nullable = true)
     private List<Produto> _listaProdutos;
 
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "_idUnidade")
+    @JoinColumn(name = "_idUnidade", nullable = true)
     private Clientes _cliente;
 
-    public Unidade(Long idUnidade, String cep) {
-        this._idUnidade = idUnidade;
+    public Unidade(String cep) {
         this._cep = cep;
     }
 
