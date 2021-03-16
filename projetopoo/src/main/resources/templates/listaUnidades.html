@@ -8,6 +8,7 @@
 </head>
 
 <body>
+    <a th:href="@{/cadastrar-unidade}"><span>Cadastro de unidades</span></a><br />
     <tr th:each="unidade:${unidades}">
         <td th:text="${unidade.GetIDUnidade()}"></td>
         <td th:text="${unidade.GetCep()}"></td>
