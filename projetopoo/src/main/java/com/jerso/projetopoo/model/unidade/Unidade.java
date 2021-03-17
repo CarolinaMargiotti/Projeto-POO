@@ -37,10 +37,13 @@ public class Unidade {
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "idUnidade", nullable = true)
     private Clientes cliente;
+    /*
+     * public Unidade(String cep) { this.cep = cep; }
+     */
 
-    public Unidade(String cep) {
-        this.cep = cep;
-    }
+    /*
+     * public Unidade(Long id, String cep) { this.id = id; this.cep = cep; }
+     */
 
     public void removeCliente(Cliente c) {
         cliente.removeCliente(c);

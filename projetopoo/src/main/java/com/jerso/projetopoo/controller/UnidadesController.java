@@ -19,8 +19,10 @@ public class UnidadesController {
 
     @GetMapping("/listar-unidade")
     public ModelAndView paginaListar() {
-        System.out.println("ba");
         List<Unidade> unidades = ur.findAll();
+        for (Unidade unidade : unidades) {
+            System.out.println(unidade.getCep());
+        }
         ModelAndView mv = new ModelAndView("listaUnidades");
         mv.addObject("unidades", unidades);
         return mv;

@@ -11,8 +11,8 @@
     <a th:href="@{/cadastrar-unidade}"><span>Cadastro de unidades</span></a><br />
     <div th:each="unidade:${unidades}">
         <p>
-            <span th:text="${unidade._idUnidade}"></span>
-            <span th:text="${unidade._cep}"></span>
+            <span th:text="${unidade.id}"></span>
+            <span th:text="${unidade.cep}"></span>
         </p>
         <br />
     </div>
