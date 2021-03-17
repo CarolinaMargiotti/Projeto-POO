@@ -19,6 +19,7 @@ public class UnidadesController {
 
     @GetMapping("/listar-unidade")
     public ModelAndView paginaListar() {
+        System.out.println("ba");
         List<Unidade> unidades = ur.findAll();
         ModelAndView mv = new ModelAndView("listaUnidades");
         mv.addObject("unidades", unidades);
@@ -27,13 +28,12 @@ public class UnidadesController {
 
     @GetMapping("/cadastrar-unidade")
     public String paginaCadastro() {
-        System.out.println("ba");
         return "cadastrarUnidade";
     }
 
     @PostMapping("/cadastrar-unidade")
     public String paginaCadastro(Unidade u, String cep) {
-        System.out.println("bu");
+        u.SetCep(cep);
         ur.save(u);
         return "cadastrarUnidade";
     }

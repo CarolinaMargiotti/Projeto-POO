@@ -9,10 +9,16 @@
 
 <body>
     <a th:href="@{/cadastrar-unidade}"><span>Cadastro de unidades</span></a><br />
-    <tr th:each="unidade:${unidades}">
-        <td th:text="${unidade.GetIDUnidade()}"></td>
-        <td th:text="${unidade.GetCep()}"></td>
-    </tr>
+    <div th:each="unidade:${unidades}">
+        <p>
+            <span th:text="${unidade._idUnidade}"></span>
+            <span th:text="${unidade._cep}"></span>
+        </p>
+        <br />
+    </div>
+
+    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
 </body>
 
 </html>

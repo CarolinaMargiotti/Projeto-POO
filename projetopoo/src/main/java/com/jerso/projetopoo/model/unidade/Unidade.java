@@ -19,28 +19,24 @@ public class Unidade {
 
     @Id()
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long _idUnidade;
+    protected Long _idUnidade;
 
     @Column()
-    private String _cep;
+    protected String _cep;
 
     @ElementCollection
     @CollectionTable(name = "_listaServicos", joinColumns = @JoinColumn(name = "_idUnidade"))
     @Column(name = "_listaServicos", nullable = true)
-    private List<Servico> _listaServicos;
+    protected List<Servico> _listaServicos;
 
     @ElementCollection
     @CollectionTable(name = "_listaProdutos", joinColumns = @JoinColumn(name = "_idUnidade"))
     @Column(name = "_listaProdutos", nullable = true)
-    private List<Produto> _listaProdutos;
+    protected List<Produto> _listaProdutos;
 
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "_idUnidade", nullable = true)
-    private Clientes _cliente;
-
-    public Unidade(String cep) {
-        this._cep = cep;
-    }
+    protected Clientes _cliente;
 
     public void RemoveCliente(Cliente c) {
         _cliente.RemoveCliente(c);
@@ -64,20 +60,14 @@ public class Unidade {
     }
 
     // Getters
-    public Long GetIDUnidade() {
-        return _idUnidade;
-    }
-
-    public String GetCep() {
-        return this._cep;
-    }
-
-    public List<Servico> GetServicos() {
-        return _listaServicos;
-    }
-
-    public List<Produto> GetProdutos() {
-        return _listaProdutos;
-    }
+    /*
+     * public Long GetIDUnidade() { return _idUnidade; }
+     * 
+     * /* public String GetCep() { return this._cep; }
+     * 
+     * /* public List<Servico> GetServicos() { return _listaServicos; }
+     * 
+     * public List<Produto> GetProdutos() { return _listaProdutos; }
+     */
 
 }
