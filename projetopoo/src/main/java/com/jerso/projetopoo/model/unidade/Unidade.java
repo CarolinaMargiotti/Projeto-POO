@@ -25,18 +25,22 @@ public class Unidade {
     private String cep;
 
     @ElementCollection
-    @CollectionTable(name = "listaServicos", joinColumns = @JoinColumn(name = "id"))
+    @CollectionTable(name = "listaServicos", joinColumns = @JoinColumn(name = "idUnidade"))
     @Column(name = "listaServicos", nullable = true)
     private List<Servico> listaServicos;
 
     @ElementCollection
-    @CollectionTable(name = "listaProdutos", joinColumns = @JoinColumn(name = "id"))
+    @CollectionTable(name = "listaProdutos", joinColumns = @JoinColumn(name = "idUnidade"))
     @Column(name = "listaProdutos", nullable = true)
     private List<Produto> listaProdutos;
 
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "id", nullable = true)
+    @JoinColumn(name = "idUnidade", nullable = true)
     private Clientes cliente;
+
+    public Unidade(String cep) {
+        this.cep = cep;
+    }
 
     public void removeCliente(Cliente c) {
         cliente.removeCliente(c);

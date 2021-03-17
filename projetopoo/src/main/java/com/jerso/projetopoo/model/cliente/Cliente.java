@@ -32,12 +32,12 @@ public class Cliente {
     private String tel;
 
     @ElementCollection
-    @CollectionTable(name = "listaProdutos", joinColumns = @JoinColumn(name = "id"))
+    @CollectionTable(name = "listaProdutosCliente", joinColumns = @JoinColumn(name = "idCliente"))
     @Column(name = "listaProdutos")
     private List<Produto> listaProdutos;
 
     @ElementCollection
-    @CollectionTable(name = "listaServicos", joinColumns = @JoinColumn(name = "id"))
+    @CollectionTable(name = "listaServicosCliente", joinColumns = @JoinColumn(name = "idCliente"))
     @Column(name = "listaServicos")
     private List<Servico> listaServicos;
 
