@@ -19,55 +19,70 @@ public class Unidade {
 
     @Id()
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    protected Long _idUnidade;
+    private Long id;
 
     @Column()
-    protected String _cep;
+    private String cep;
 
     @ElementCollection
-    @CollectionTable(name = "_listaServicos", joinColumns = @JoinColumn(name = "_idUnidade"))
-    @Column(name = "_listaServicos", nullable = true)
-    protected List<Servico> _listaServicos;
+    @CollectionTable(name = "listaServicos", joinColumns = @JoinColumn(name = "id"))
+    @Column(name = "listaServicos", nullable = true)
+    private List<Servico> listaServicos;
 
     @ElementCollection
-    @CollectionTable(name = "_listaProdutos", joinColumns = @JoinColumn(name = "_idUnidade"))
-    @Column(name = "_listaProdutos", nullable = true)
-    protected List<Produto> _listaProdutos;
+    @CollectionTable(name = "listaProdutos", joinColumns = @JoinColumn(name = "id"))
+    @Column(name = "listaProdutos", nullable = true)
+    private List<Produto> listaProdutos;
 
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "_idUnidade", nullable = true)
-    protected Clientes _cliente;
+    @JoinColumn(name = "id", nullable = true)
+    private Clientes cliente;
 
-    public void RemoveCliente(Cliente c) {
-        _cliente.RemoveCliente(c);
+    public void removeCliente(Cliente c) {
+        cliente.removeCliente(c);
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     // Setters
-    public void SetCep(String cep) {
-        this._cep = cep;
+    public void setCep(String cep) {
+        this.cep = cep;
     }
 
-    public void AddServicos(Servico servico) {
-        _listaServicos.add(servico);
+    public void addServicos(Servico servico) {
+        listaServicos.add(servico);
     }
 
-    public void AddProduto(Produto produto) {
-        _listaProdutos.add(produto);
+    public void addProduto(Produto produto) {
+        listaProdutos.add(produto);
     }
 
-    public void AddCliente(Cliente c) {
-        _cliente.AddCliente(c);
+    public void addCliente(Cliente c) {
+        cliente.addCliente(c);
     }
 
     // Getters
-    /*
-     * public Long GetIDUnidade() { return _idUnidade; }
-     * 
-     * /* public String GetCep() { return this._cep; }
-     * 
-     * /* public List<Servico> GetServicos() { return _listaServicos; }
-     * 
-     * public List<Produto> GetProdutos() { return _listaProdutos; }
-     */
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getCep() {
+        return cep;
+    }
+
+    public List<Servico> getServicos() {
+        return listaServicos;
+    }
+
+    public List<Produto> getProdutos() {
+        return listaProdutos;
+    }
+
+    public Clientes getClientes() {
+        return cliente;
+    }
 
 }

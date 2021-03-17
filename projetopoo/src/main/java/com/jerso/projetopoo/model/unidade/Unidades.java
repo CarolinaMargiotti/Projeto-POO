@@ -4,24 +4,17 @@ import java.util.List;
 
 import javax.persistence.Entity;
 
-
-
-
 public class Unidades {
-    private List<Unidade> _listaUnidades;
+    private List<Unidade> listaUnidades;
 
-    
-    //funções da classe ;)
+    // funções da classe ;)
 
-    public void AddUnidades(Unidade u){
-        _listaUnidades.add(u);
+    public void addUnidades(Unidade u) {
+        listaUnidades.add(u);
     }
 
-     public void RemoveUnidades(Unidade u){
-        _listaUnidades.remove(u);
+    public void removeUnidades(Unidade u) {
+        listaUnidades.remove(u);
     }
 
 }
-
-
-

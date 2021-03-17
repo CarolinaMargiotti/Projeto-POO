@@ -33,7 +33,7 @@ public class UnidadesController {
 
     @PostMapping("/cadastrar-unidade")
     public String paginaCadastro(Unidade u, String cep) {
-        u.SetCep(cep);
+        u.setCep(cep);
         ur.save(u);
         return "cadastrarUnidade";
     }

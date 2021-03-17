@@ -18,48 +18,48 @@ public class Clientes {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long _idClientes;
+    private Long id;
 
     @ElementCollection
-    @CollectionTable(name = "_listaClientes", joinColumns = @JoinColumn(name = "_idUnidade"))
-    @Column(name = "_listaClientes")
-    private List<Cliente> _listaClientes;
+    @CollectionTable(name = "listaClientes", joinColumns = @JoinColumn(name = "id"))
+    @Column(name = "listaClientes")
+    private List<Cliente> listaClientes;
 
     public Clientes() {
 
     }
 
-    public void AddCliente(Cliente cliente) {
-        _listaClientes.add(cliente);
+    public void addCliente(Cliente cliente) {
+        listaClientes.add(cliente);
     }
 
-    public void RemoveCliente(Cliente cliente) {
-        _listaClientes.remove(cliente);
+    public void removeCliente(Cliente cliente) {
+        listaClientes.remove(cliente);
     }
 
-    public int GetIdadeMedia() {
+    public int getIdadeMedia() {
         int idade = 0;
-        for (Cliente cliente : _listaClientes) {
-            idade += cliente.GetIdade();
+        for (Cliente cliente : listaClientes) {
+            idade += cliente.getIdade();
         }
-        return idade / _listaClientes.size();
+        return idade / listaClientes.size();
     }
 
-    public int GetIdadeMediaGenero(String genero) {
-        List<Cliente> clientegenero = _listaClientes.stream().filter(c -> c.GetGenero() == genero)
+    public int getIdadeMediaGenero(String genero) {
+        List<Cliente> clientegenero = listaClientes.stream().filter(c -> c.getGenero() == genero)
                 .collect(Collectors.toList());
         int idade = 0;
         for (Cliente cliente : clientegenero) {
-            idade += cliente.GetIdade();
+            idade += cliente.getIdade();
         }
         return idade / clientegenero.size();
     }
 
-    public int GetServicoMaisProcurado() {
+    public int getServicoMaisProcurado() {
         return 0;
     }
 
-    public int GetServicoMaisProcuradoGenero(String genero) {
+    public int getServicoMaisProcuradoGenero(String genero) {
         return 0;
     }
 

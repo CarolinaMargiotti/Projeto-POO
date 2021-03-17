@@ -21,106 +21,106 @@ public class Cliente {
 
     @Id()
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long _id;
+    private Long id;
     @Column
-    private String _nome;
+    private String nome;
     @Column
-    private String _genero;
+    private String genero;
     @Column
-    private LocalDate _dataNascimento;
+    private LocalDate dataNascimento;
     @Column
-    private String _tel;
+    private String tel;
 
     @ElementCollection
-    @CollectionTable(name = "_listaProdutosCliente", joinColumns = @JoinColumn(name = "_idUnidade"))
-    @Column(name = "_listaProdutosCliente")
-    private List<Produto> _listaProdutos;
+    @CollectionTable(name = "listaProdutos", joinColumns = @JoinColumn(name = "id"))
+    @Column(name = "listaProdutos")
+    private List<Produto> listaProdutos;
 
     @ElementCollection
-    @CollectionTable(name = "_listaServicosCliente", joinColumns = @JoinColumn(name = "_idUnidade"))
-    @Column(name = "_listaServicosCliente")
-    private List<Servico> _listaServicos;
+    @CollectionTable(name = "listaServicos", joinColumns = @JoinColumn(name = "id"))
+    @Column(name = "listaServicos")
+    private List<Servico> listaServicos;
 
     public Cliente(String nome, String genero, LocalDate dataNascimento, String tel) {
-        this._nome = nome;
-        this._genero = genero;
-        this._dataNascimento = dataNascimento;
-        this._tel = tel;
+        this.nome = nome;
+        this.genero = genero;
+        this.dataNascimento = dataNascimento;
+        this.tel = tel;
     }
 
     // Setters
 
-    public void AddProduto(Produto produto) {
-        _listaProdutos.add(produto);
+    public void addProduto(Produto produto) {
+        listaProdutos.add(produto);
     }
 
-    public void AddServico(Servico servico) {
-        _listaServicos.add(servico);
+    public void addServico(Servico servico) {
+        listaServicos.add(servico);
     }
 
-    public void SetNome(String nome) {
-        this._nome = nome;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
-    public void SetGenero(String genero) {
-        this._genero = genero;
+    public void setGenero(String genero) {
+        this.genero = genero;
     }
 
-    public void SetDataNascimento(LocalDate dataNascimento) {
-        this._dataNascimento = dataNascimento;
+    public void setDataNascimento(LocalDate dataNascimento) {
+        this.dataNascimento = dataNascimento;
     }
 
-    public void SetTel(String tel) {
-        this._tel = tel;
+    public void setTel(String tel) {
+        this.tel = tel;
     }
 
     // Getters
 
-    public List<Produto> GetListaProdutos() {
-        return _listaProdutos;
+    public List<Produto> getListaProdutos() {
+        return listaProdutos;
     }
 
-    public List<Servico> GetListaServicos() {
-        return _listaServicos;
+    public List<Servico> getListaServicos() {
+        return listaServicos;
     }
 
-    public String GetNome() {
-        return _nome;
+    public String getNome() {
+        return nome;
     }
 
-    public String GetGenero() {
-        return _genero;
+    public String getGenero() {
+        return genero;
     }
 
-    public LocalDate GetDataNascimento() {
-        return _dataNascimento;
+    public LocalDate getDataNascimento() {
+        return dataNascimento;
     }
 
-    public String GetTelefone() {
-        return this._tel;
+    public String getTelefone() {
+        return this.tel;
     }
 
     // Deletes
 
-    public void RemoveProduto(Produto prod) {
-        _listaProdutos.remove(prod);
+    public void removeProduto(Produto prod) {
+        listaProdutos.remove(prod);
     }
 
-    public void RemoveServico(Servico servico) {
-        _listaServicos.remove(servico);
+    public void removeServico(Servico servico) {
+        listaServicos.remove(servico);
     }
 
     // Outros
 
-    public boolean ProdutoExists(Produto prod) {
-        if (_listaProdutos.indexOf(prod) != -1)
+    public boolean produtoExists(Produto prod) {
+        if (listaProdutos.indexOf(prod) != -1)
             return true;
         else
             return false;
     }
 
-    public int GetIdade() {
-        return Period.between(_dataNascimento, LocalDate.now()).getYears();
+    public int getIdade() {
+        return Period.between(dataNascimento, LocalDate.now()).getYears();
     }
 
 }

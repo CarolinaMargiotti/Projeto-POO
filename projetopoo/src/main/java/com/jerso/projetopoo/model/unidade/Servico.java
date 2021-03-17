@@ -15,34 +15,42 @@ public class Servico {
 
     @Id()
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long _id;
+    private Long id;
     @Column
-    private String _nome;
+    private String nome;
     @Column
-    private String _genero;
+    private String genero;
 
     public Servico(String nome, String genero) {
-        this._nome = nome;
-        this._genero = genero;
+        this.nome = nome;
+        this.genero = genero;
     }
 
     // Setters
 
-    public void SetNome(String nome) {
-        this._nome = nome;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
-    public void SetGenero(String genero) {
-        this._genero = genero;
+    public void setGenero(String genero) {
+        this.genero = genero;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     // Getters
 
-    public String GetNome() {
-        return _nome;
+    public String getNome() {
+        return nome;
     }
 
-    public String GetGenero() {
-        return _genero;
+    public String getGenero() {
+        return genero;
+    }
+
+    public Long getId() {
+        return id;
     }
 }
