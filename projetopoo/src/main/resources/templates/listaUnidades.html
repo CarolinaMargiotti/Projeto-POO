@@ -9,13 +9,23 @@
 
 <body>
     <a th:href="@{/cadastrar-unidade}"><span>Cadastro de unidades</span></a><br />
-    <div th:each="unidade:${unidades}">
+    <!--<div th:each="unidade:${unidades}">
         <p>
             <span th:text="${unidade.id}"></span>
             <span th:text="${unidade.cep}"></span>
+            <span>Edit</span>
+            <span>Delete</span>
         </p>
-        <br />
-    </div>
+    </div>-->
+
+    <ul class="list-group" th:each="unidade:${unidades}">
+        <li class="list-group-item">
+            <span th:text="${unidade.id}"></span>
+            <span th:text="${unidade.cep}"></span>
+            <span><a th:href="@{/editar-unidade/{id}(id=${unidade.id})}"></a></span>
+            <span>Delete</span>
+        </li>
+    </ul>
 
     <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
     <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
