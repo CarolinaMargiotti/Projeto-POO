@@ -6,7 +6,6 @@ import java.util.stream.Collectors;
 import javax.persistence.CollectionTable;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
-import javax.persistence.Embeddable;
 import javax.persistence.Entity;
 import javax.persistence.GenerationType;
 import javax.persistence.GeneratedValue;

@@ -1,7 +1,6 @@
 package com.jerso.projetopoo.model.unidade;
 
 import java.time.LocalDate;
-import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
