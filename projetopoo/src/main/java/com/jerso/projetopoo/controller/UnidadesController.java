@@ -41,16 +41,21 @@ public class UnidadesController {
     }
 
     @GetMapping("/editar-unidade/{id}")
-    public String edit(@PathVariable("id") long id) {
+    public ModelAndView edit(@PathVariable("id") long id) {
         ModelAndView mv = new ModelAndView("editarUnidade");
         Unidade u = ur.findById(id).get();
+        System.out.println(u.getCep());
+        System.out.println(u.getId());
         mv.addObject("unidade", u);
-        return "editarUnidade";
+        return mv;
     }
 
-    @PostMapping("/editar-unidade/{id}")
-    public String edit(@PathVariable("id") long id, Unidade u) {
-        ur.save(u);
+    @PostMapping("/editar-unidade")
+    public String edit(long id, Unidade u) {
+        Unidade u2 = ur.findById(id).get();
+        u2.setCep(u.getCep());
+
+        ur.save(u2);
         return "listaUnidades";
     }
 }

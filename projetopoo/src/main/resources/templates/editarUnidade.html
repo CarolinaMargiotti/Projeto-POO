@@ -10,14 +10,12 @@
 <body>
     <a th:href="@{/listar-unidade}"><span>Listagem de unidades</span></a><br />
 
-    <form th:action="@{/cadastrar-unidade}" th:object="${unidade}" method="post">
+    <form action="#" th:action="@{/editar-unidade}" th:object="${unidade}" method="post">
         <label>ID</label><br>
-        <input type="text" name="id" th:field="*{id}"><br>
-        <!--<label for="exampleFormControlInput1">CEP</label><br>
-            <input type="text" name="cep" class="form-form-control form-control-lg" th:text="${unidade.cep}"><br>
-            <a th:href="@{/listar-unidadeServicos}"><span>Editar Servicos</span></a><br />
-            <a th:href="@{/listar-unidadeProdutos}"><span>Editar Produtos</span></a><br />-->
-        <input type="submit" value="Update user" /><br>
+        <input type="text" id="id" th:field="*{id}"><br>
+        <label>CEP</label><br>
+        <input type="text" id="cep" th:field="*{cep}"><br>
+        <input type="submit" value="Update unidade" /><br>
     </form>
 
     <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
