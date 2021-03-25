@@ -12,7 +12,7 @@
 
     <form action="#" th:action="@{/editar-unidade}" th:object="${unidade}" method="post">
         <label>ID</label><br>
-        <input type="text" id="id" th:field="*{id}"><br>
+        <input type="text" id="id" th:field="*{id}" readonly><br>
         <label>CEP</label><br>
         <input type="text" id="cep" th:field="*{cep}"><br>
         <input type="submit" value="Update unidade" /><br>

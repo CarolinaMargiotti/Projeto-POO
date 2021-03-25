@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.servlet.ModelAndView;
 import java.util.List;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class UnidadesController {
@@ -44,18 +47,23 @@ public class UnidadesController {
     public ModelAndView edit(@PathVariable("id") long id) {
         ModelAndView mv = new ModelAndView("editarUnidade");
         Unidade u = ur.findById(id).get();
-        System.out.println(u.getCep());
-        System.out.println(u.getId());
         mv.addObject("unidade", u);
         return mv;
     }
 
     @PostMapping("/editar-unidade")
-    public String edit(long id, Unidade u) {
+    public ModelAndView edit(long id, Unidade u) {
         Unidade u2 = ur.findById(id).get();
         u2.setCep(u.getCep());
-
         ur.save(u2);
-        return "listaUnidades";
+        return paginaListar();
     }
+
+    @RequestMapping("/deletar-unidade/{id}")
+    public ModelAndView requestMethodName(@PathVariable("id") long id) {
+        Unidade u = ur.findById(id).get();
+        ur.delete(u);
+        return paginaListar();
+    }
+
 }
