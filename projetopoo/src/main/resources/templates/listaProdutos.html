@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Lista Produtos</title>
+    <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet" />
+    <link th:href="@{/webjars/bootstrap/css/bootstrap-theme-min.css}" rel="stylesheet" />
+</head>
+
+<body>
+    <div th:object="${unidade}">
+        <h1>Visualizando lista de produtos</h1>
+        <h2>Unidade ID [( ${id} )]</h2>
+        <!--<h1 th:text="*{id}"></h1>-->
+    </div>
+
+    <a th:href="@{/cadastrar-unidade}"><span>Cadastro de Produtos</span></a><br />
+
+    <li class="list-group-item">
+        <span>ID</span>
+        <span>Nome</span>
+        <span>Marca</span>
+        <span>Preço</span>
+        <a>Edit</a>
+        <span>Delete</span>
+    </li>
+    <ul class="list-group" th:each="produto:${produtos}">
+        <li class="list-group-item">
+            <span th:text="${produto.id}"></span>
+            <span th:text="${produto.nome}"></span>
+            <span th:text="${produto.marca}"></span>
+            <span th:text="${produto.preco}"></span>
+            <!--<a th:href="@{/editar-unidade/{id}(id=${unidade.id})}">Edit</a>
+            <a th:href="@{/deletar-unidade/{id}(id=${unidade.id})}">Delete</a>-->
+        </li>
+    </ul>
+
+    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</body>
+
+</html>

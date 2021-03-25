@@ -13,6 +13,7 @@
     <li class="list-group-item">
         <span>ID</span>
         <span>CEP</span>
+        <span>Listar Produtos</span>
         <a>Edit</a>
         <span>Delete</span>
     </li>
@@ -20,6 +21,7 @@
         <li class="list-group-item">
             <span th:text="${unidade.id}"></span>
             <span th:text="${unidade.cep}"></span>
+            <a th:href="@{/listar-unidade/{id}/listar-produtos (id=${unidade.id})}">View products</a>
             <a th:href="@{/editar-unidade/{id}(id=${unidade.id})}">Edit</a>
             <a th:href="@{/deletar-unidade/{id}(id=${unidade.id})}">Delete</a>
         </li>
