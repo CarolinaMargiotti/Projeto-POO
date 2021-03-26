@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Cadastro Produto</title>
+    <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet" />
+    <link th:href="@{/webjars/bootstrap/css/bootstrap-theme-min.css}" rel="stylesheet" />
+</head>
+
+<body th:object="${unidade}">
+    <a th:href="@{/listar-unidade/{id}/listar-produtos (id=${unidade.id})}"><span>Listagem de unidades</span></a><br />
+    <form th:action="@{/cadastrar-unidade/{id}/cadastrar-produtos (id=${unidade.id})}" method="post">
+        <div class="form-group">
+            <label for="exampleFormControlInput1">Nome</label><br>
+            <input type="text" name="nome" class="form-form-control form-control-lg"><br>
+            <label for="exampleFormControlInput1">Marca</label><br>
+            <input type="text" name="marca" class="form-form-control form-control-lg"><br>
+            <label for="exampleFormControlInput1">Preço</label><br>
+            <input type="text" name="preco" class="form-form-control form-control-lg"><br>
+            <input type="submit" /><br>
+        </div>
+    </form>
+
+    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</body>
+
+</html>

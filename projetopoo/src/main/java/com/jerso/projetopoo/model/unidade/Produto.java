@@ -24,12 +24,11 @@ public class Produto {
     @Column
     private float preco;
 
-    public Produto(String nome, String marca, LocalDate diaConsumido, float preco) {
-        this.nome = nome;
-        this.marca = marca;
-        this.diaConsumido = diaConsumido;
-        this.preco = preco;
-    }
+    /*
+     * public Produto(String nome, String marca, LocalDate diaConsumido, float
+     * preco) { this.nome = nome; this.marca = marca; this.diaConsumido =
+     * diaConsumido; this.preco = preco; }
+     */
 
     // Setters
 

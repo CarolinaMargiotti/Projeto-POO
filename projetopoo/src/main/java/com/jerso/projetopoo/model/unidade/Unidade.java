@@ -34,7 +34,7 @@ public class Unidade {
     @Column(name = "listaProdutos", nullable = true)
     private List<Produto> listaProdutos;
 
-    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToOne(cascade = CascadeType.REFRESH, orphanRemoval = true)
     @JoinColumn(name = "idUnidade", nullable = true)
     private Clientes cliente;
 

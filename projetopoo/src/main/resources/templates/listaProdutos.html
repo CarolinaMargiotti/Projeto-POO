@@ -7,16 +7,16 @@
     <link th:href="@{/webjars/bootstrap/css/bootstrap-theme-min.css}" rel="stylesheet" />
 </head>
 
-<body>
-    <div th:object="${unidade}">
-        <h1>Visualizando lista de produtos</h1>
-        <h2>Unidade ID [( ${id} )]</h2>
-        <!--<h1 th:text="*{id}"></h1>-->
-    </div>
+<body th:object="${unidade}">
+    <!--<div th:object=" ${unidade}">-->
+    <h1>Visualizando lista de produtos</h1>
+    <h2>Unidade ID [( ${id} )]</h2>
+    <!--</div>-->
 
-    <a th:href="@{/cadastrar-unidade}"><span>Cadastro de Produtos</span></a><br />
+    <a th:href="@{/cadastrar-unidade/{id}/cadastrar-produtos (id=${unidade.id})}"><span>Cadastro de
+            Produtos</span></a><br />
 
-    <li class="list-group-item">
+    <!--<li class="list-group-item">
         <span>ID</span>
         <span>Nome</span>
         <span>Marca</span>
@@ -30,10 +30,29 @@
             <span th:text="${produto.nome}"></span>
             <span th:text="${produto.marca}"></span>
             <span th:text="${produto.preco}"></span>
-            <!--<a th:href="@{/editar-unidade/{id}(id=${unidade.id})}">Edit</a>
-            <a th:href="@{/deletar-unidade/{id}(id=${unidade.id})}">Delete</a>-->
         </li>
-    </ul>
+    </ul>-->
+
+    <table class="table" th:each="produto:${produtos}">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Marca</th>
+                <th scope="col">Preço</th>
+                <th scope="col">Edit</th>
+                <th scope="col">Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row" th:text="${produto.id}"></th>
+                <td th:text="${produto.nome}"></td>
+                <td th:text="${produto.marca}"></td>
+                <td th:text="${produto.preco}"></td>
+            </tr>
+        </tbody>
+    </table>
 
     <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
     <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
