@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Lista Unidades</title>
+    <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet" />
+    <link th:href="@{/webjars/bootstrap/css/bootstrap-theme-min.css}" rel="stylesheet" />
+</head>
+
+<body>
+
+    <div th:object="${unidade}">
+        <a th:href="@{/listar-unidade/{id}/listar-produtos (id=${unidade.id})}"><span>Listagem de
+                produtos</span></a><br />
+
+
+        <form action="#" th:action="@{//editar-unidade/{id}/editar-produto (id=${unidade.id})}" th:object="${produto}"
+            method="post">
+            <label>ID</label><br>
+            <input type="text" id="id" th:field="*{id}" readonly><br>
+            <label>Nome</label><br>
+            <input type="text" id="cep" th:field="*{nome}"><br>
+            <label>Marca</label><br>
+            <input type="text" id="cep" th:field="*{marca}"><br>
+            <label>Preço</label><br>
+            <input type="text" id="cep" th:field="*{preco}"><br>
+            <label>Dia Consumido</label><br>
+            <input type="date" id="cep" th:field="*{diaConsumido}"><br>
+            <input type="submit" value="Update unidade" /><br>
+        </form>
+    </div>
+
+    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</body>
+
+</html>

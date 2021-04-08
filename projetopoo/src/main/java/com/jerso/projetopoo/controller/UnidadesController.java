@@ -21,26 +21,26 @@ public class UnidadesController {
     @GetMapping("/listar-unidade")
     public ModelAndView paginaListar() {
         List<Unidade> unidades = ur.findAll();
-        ModelAndView mv = new ModelAndView("listaUnidades");
+        ModelAndView mv = new ModelAndView("crudUnidade/listaUnidades");
         mv.addObject("unidades", unidades);
         return mv;
     }
 
     @GetMapping("/cadastrar-unidade")
     public String paginaCadastro() {
-        return "cadastrarUnidade";
+        return "crudUnidade/cadastrarUnidade";
     }
 
     @PostMapping("/cadastrar-unidade")
     public String paginaCadastro(Unidade u, String cep) {
         u.setCep(cep);
         ur.save(u);
-        return "cadastrarUnidade";
+        return "crudUnidade/cadastrarUnidade";
     }
 
     @GetMapping("/editar-unidade/{id}")
     public ModelAndView edit(@PathVariable("id") long id) {
-        ModelAndView mv = new ModelAndView("editarUnidade");
+        ModelAndView mv = new ModelAndView("crudUnidade/editarUnidade");
         Unidade u = ur.findById(id).get();
         mv.addObject("unidade", u);
         return mv;

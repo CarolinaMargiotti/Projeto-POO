@@ -91,4 +91,23 @@ public class Unidade {
         return cliente;
     }
 
+    // others
+
+    public Produto getProdutoById(long id) {
+        for (Produto produto : listaProdutos) {
+            if (produto.getId() == id) {
+                return produto;
+            }
+        }
+        return null;
+    }
+
+    public void saveProduto(Produto p) {
+        for (int i = 0; i <= listaProdutos.size(); i++) {
+            if (listaProdutos.get(i).getId() == p.getId()) {
+                listaProdutos.set(i, p);
+            }
+        }
+    }
+
 }

@@ -26,7 +26,7 @@ public class ProdutosController {
     public ModelAndView paginaListar(@PathVariable("id") long id) {
         Unidade u = ur.findById(id).get();
         List<Produto> produtos = u.getListaProdutos();
-        ModelAndView mv = new ModelAndView("listaProdutos");
+        ModelAndView mv = new ModelAndView("crudProduto/listaProdutos");
         mv.addObject("produtos", produtos);
         mv.addObject("unidade", u);
         return mv;
@@ -35,7 +35,7 @@ public class ProdutosController {
     @GetMapping("/cadastrar-unidade/{id}/cadastrar-produtos")
     public ModelAndView paginaCadastro(@PathVariable("id") long id) {
         Unidade u = ur.findById(id).get();
-        ModelAndView mv = new ModelAndView("cadastrarProdutos");
+        ModelAndView mv = new ModelAndView("crudProduto/cadastrarProdutos");
         mv.addObject("unidade", u);
         return mv;
     }
@@ -49,6 +49,26 @@ public class ProdutosController {
         u.setListaProdutos(p);
         ur.save(u);
         return paginaCadastro(id);// "/cadastrar-unidade/" + id + "/cadastrar-produtos";
+    }
+
+    @GetMapping("/editar-unidade/{id}/editar-produto/{idProduto}")
+    public ModelAndView paginaEditar(@PathVariable("id") long id, @PathVariable("idProduto") long idProduto) {
+        ModelAndView mv = new ModelAndView("crudProduto/editarProdutos");
+        Unidade u = ur.findById(id).get();
+        System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+        Produto p = u.getProdutoById(idProduto);
+        System.out.println("BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB");
+        mv.addObject("produto", p);
+        mv.addObject("unidade", u);
+        return mv;
+    }
+
+    @PostMapping("/editar-unidade/{id}/editar-produto")
+    public ModelAndView paginaEditar(@PathVariable("id") long id, Produto p) {
+        Unidade u = ur.findById(id).get();
+        u.saveProduto(p);
+        ur.save(u);
+        return paginaListar(id);
     }
 
 }

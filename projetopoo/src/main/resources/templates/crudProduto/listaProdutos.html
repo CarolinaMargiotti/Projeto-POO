@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Lista Produtos</title>
+    <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet" />
+    <link th:href="@{/webjars/bootstrap/css/bootstrap-theme-min.css}" rel="stylesheet" />
+</head>
+
+<body>
+    <div th:object=" ${unidade}">
+        <h1>Visualizando lista de produtos</h1>
+        <h2>Unidade ID [( ${id} )]</h2>
+        <a th:href="@{/listar-unidade}"><span>Voltar a Listagem de unidades</span></a><br />
+        <a th:href="@{/cadastrar-unidade/{id}/cadastrar-produtos (id=${unidade.id})}"><span>Cadastro de
+                Produtos</span></a><br />
+
+
+        <table class="table" th:each="produto:${produtos}">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Marca</th>
+                    <th scope="col">Preço</th>
+                    <th scope="col">Editar</th>
+                    <!--<th scope="col">Deletar</th>-->
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row" th:text="${produto.id}"></th>
+                    <td th:text="${produto.nome}"></td>
+                    <td th:text="${produto.marca}"></td>
+                    <td th:text="${produto.preco}"></td>
+                    <td><a
+                            th:href="@{/editar-unidade/{id}/editar-produto/{idProduto}(id=${unidade.id})(idProduto=${produto.id})}">Editar</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</body>
+
+</html>
