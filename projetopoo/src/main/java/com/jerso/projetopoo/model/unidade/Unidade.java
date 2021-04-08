@@ -1,18 +1,24 @@
 package com.jerso.projetopoo.model.unidade;
 
-import com.jerso.projetopoo.model.cliente.*;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
-import javax.persistence.CollectionTable;
 import javax.persistence.Column;
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.OrderColumn;
+
+import com.jerso.projetopoo.model.cliente.Cliente;
+import com.jerso.projetopoo.model.cliente.Clientes;
+
+import org.hibernate.annotations.Index;
+import org.hibernate.annotations.IndexColumn;
 
 @Entity
 public class Unidade {
@@ -24,17 +30,17 @@ public class Unidade {
     @Column()
     private String cep;
 
-    @ElementCollection
-    @CollectionTable(name = "listaServicos", joinColumns = @JoinColumn(name = "idUnidade"))
-    @Column(name = "listaServicos", nullable = true)
-    private List<Servico> listaServicos;
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = false)
+    @JoinColumn(name = "idUnidade", nullable = true)
+    @OrderColumn(name = "Ordem")
+    private List<Servico> listaServicos = new ArrayList<Servico>();
 
-    @ElementCollection
-    @CollectionTable(name = "listaProdutos", joinColumns = @JoinColumn(name = "idUnidade"))
-    @Column(name = "listaProdutos", nullable = true)
-    private List<Produto> listaProdutos;
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = false)
+    @JoinColumn(name = "idUnidade", nullable = true)
+    @OrderColumn(name = "Ordem")
+    private List<Produto> listaProdutos = new ArrayList<Produto>();
 
-    @OneToOne(cascade = CascadeType.REFRESH, orphanRemoval = true)
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = false)
     @JoinColumn(name = "idUnidade", nullable = true)
     private Clientes cliente;
 
@@ -51,15 +57,15 @@ public class Unidade {
         this.cep = cep;
     }
 
-    public void addServicos(Servico servico) {
+    public void setListaServicos(Servico servico) {
         listaServicos.add(servico);
     }
 
-    public void addProduto(Produto produto) {
+    public void setListaProdutos(Produto produto) {
         listaProdutos.add(produto);
     }
 
-    public void addCliente(Cliente c) {
+    public void setCliente(Cliente c) {
         cliente.addCliente(c);
     }
 
@@ -73,11 +79,11 @@ public class Unidade {
         return cep;
     }
 
-    public List<Servico> getServicos() {
+    public List<Servico> getListaServicos() {
         return listaServicos;
     }
 
-    public List<Produto> getProdutos() {
+    public List<Produto> getListaProdutos() {
         return listaProdutos;
     }
 

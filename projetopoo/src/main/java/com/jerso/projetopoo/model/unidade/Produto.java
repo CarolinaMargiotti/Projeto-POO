@@ -48,6 +48,10 @@ public class Produto {
         this.preco = preco;
     }
 
+    public void setId(long id) {
+        this.id = id;
+    }
+
     // Getters
 
     public String getNome() {
@@ -66,4 +70,7 @@ public class Produto {
         return this.preco;
     }
 
+    public long getId() {
+        return this.id;
+    }
 }

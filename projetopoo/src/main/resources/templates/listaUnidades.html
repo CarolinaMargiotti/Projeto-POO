@@ -10,16 +10,17 @@
 <body>
     <a th:href="@{/cadastrar-unidade}"><span>Cadastro de unidades</span></a><br />
 
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">CEP</th>
+            <th scope="col">Produtos</th>
+            <th scope="col">Edit</th>
+            <th scope="col">Delete</th>
+        </tr>
+    </thead>
+
     <table class="table" th:each="unidade:${unidades}">
-        <thead class="thead-dark">
-            <tr>
-                <th scope="col">ID</th>
-                <th scope="col">CEP</th>
-                <th scope="col">Produtos</th>
-                <th scope="col">Edit</th>
-                <th scope="col">Delete</th>
-            </tr>
-        </thead>
         <tbody>
             <tr>
                 <th scope="row" th:text="${unidade.id}"></th>

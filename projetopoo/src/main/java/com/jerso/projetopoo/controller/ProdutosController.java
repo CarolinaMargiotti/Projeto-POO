@@ -25,7 +25,7 @@ public class ProdutosController {
     @GetMapping("/listar-unidade/{id}/listar-produtos")
     public ModelAndView paginaListar(@PathVariable("id") long id) {
         Unidade u = ur.findById(id).get();
-        List<Produto> produtos = u.getProdutos();
+        List<Produto> produtos = u.getListaProdutos();
         ModelAndView mv = new ModelAndView("listaProdutos");
         mv.addObject("produtos", produtos);
         mv.addObject("unidade", u);
@@ -35,21 +35,20 @@ public class ProdutosController {
     @GetMapping("/cadastrar-unidade/{id}/cadastrar-produtos")
     public ModelAndView paginaCadastro(@PathVariable("id") long id) {
         Unidade u = ur.findById(id).get();
-        ModelAndView mv = new ModelAndView("CadastrarProdutos");
+        ModelAndView mv = new ModelAndView("cadastrarProdutos");
         mv.addObject("unidade", u);
         return mv;
     }
 
     @PostMapping("/cadastrar-unidade/{id}/cadastrar-produtos")
-    public String paginaCadastro(@PathVariable("id") long id, Produto p, String nome, String marca, float preco) {
+    public ModelAndView paginaCadastro(@PathVariable("id") long id, Produto p, String nome, String marca, float preco) {
         Unidade u = ur.findById(id).get();
         p.setNome(nome);
         p.setMarca(marca);
         p.setPreco(preco);
-        u.addProduto(p);
-        System.out.println(p);
+        u.setListaProdutos(p);
         ur.save(u);
-
-        return "/cadastrar-unidade/" + id + "/cadastrar-produtos";
+        return paginaCadastro(id);// "/cadastrar-unidade/" + id + "/cadastrar-produtos";
     }
+
 }

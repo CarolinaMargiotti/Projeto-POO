@@ -7,14 +7,16 @@
     <link th:href="@{/webjars/bootstrap/css/bootstrap-theme-min.css}" rel="stylesheet" />
 </head>
 
-<body th:object="${unidade}">
-    <!--<div th:object=" ${unidade}">-->
-    <h1>Visualizando lista de produtos</h1>
-    <h2>Unidade ID [( ${id} )]</h2>
-    <!--</div>-->
+<body>
+    <div th:object=" ${unidade}">
+        <h1>Visualizando lista de produtos</h1>
+        <h2>Unidade ID [( ${id} )]</h2>
+        <a th:href="@{/cadastrar-unidade/{id}/cadastrar-produtos (id=${unidade.id})}"><span>Cadastro de
+                Produtos</span></a><br />
+        <a th:href="@{/listar-unidade}"><span>Voltar a Listagem de unidades</span></a><br />
+    </div>
 
-    <a th:href="@{/cadastrar-unidade/{id}/cadastrar-produtos (id=${unidade.id})}"><span>Cadastro de
-            Produtos</span></a><br />
+
 
     <!--<li class="list-group-item">
         <span>ID</span>
@@ -40,8 +42,8 @@
                 <th scope="col">Nome</th>
                 <th scope="col">Marca</th>
                 <th scope="col">Preço</th>
-                <th scope="col">Edit</th>
-                <th scope="col">Delete</th>
+                <!--<th scope="col">Edit</th>
+                <th scope="col">Delete</th>-->
             </tr>
         </thead>
         <tbody>

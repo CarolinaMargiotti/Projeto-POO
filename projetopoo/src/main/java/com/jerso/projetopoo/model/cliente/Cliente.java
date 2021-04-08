@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.Period;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.CollectionTable;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
@@ -12,6 +13,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OrderColumn;
 
 import com.jerso.projetopoo.model.unidade.Produto;
 import com.jerso.projetopoo.model.unidade.Servico;
@@ -31,15 +34,15 @@ public class Cliente {
     @Column
     private String tel;
 
-    @ElementCollection
-    @CollectionTable(name = "listaProdutosCliente", joinColumns = @JoinColumn(name = "idCliente"))
-    @Column(name = "listaProdutos")
-    private List<Produto> listaProdutos;
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = false)
+    @JoinColumn(name = "idCliente", nullable = true)
+    @OrderColumn(name = "Ordem")
+    private List<Produto> listaProdutosCliente;
 
-    @ElementCollection
-    @CollectionTable(name = "listaServicosCliente", joinColumns = @JoinColumn(name = "idCliente"))
-    @Column(name = "listaServicos")
-    private List<Servico> listaServicos;
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = false)
+    @JoinColumn(name = "idCliente", nullable = true)
+    @OrderColumn(name = "Ordem")
+    private List<Servico> listaServicosCliente;
 
     public Cliente(String nome, String genero, LocalDate dataNascimento, String tel) {
         this.nome = nome;
@@ -50,12 +53,12 @@ public class Cliente {
 
     // Setters
 
-    public void addProduto(Produto produto) {
-        listaProdutos.add(produto);
+    public void setListaProdutosCliente(Produto produto) {
+        listaProdutosCliente.add(produto);
     }
 
-    public void addServico(Servico servico) {
-        listaServicos.add(servico);
+    public void setListaServicosCliente(Servico servico) {
+        listaServicosCliente.add(servico);
     }
 
     public void setNome(String nome) {
@@ -76,12 +79,12 @@ public class Cliente {
 
     // Getters
 
-    public List<Produto> getListaProdutos() {
-        return listaProdutos;
+    public List<Produto> getlistaProdutosCliente() {
+        return listaProdutosCliente;
     }
 
-    public List<Servico> getListaServicos() {
-        return listaServicos;
+    public List<Servico> getListaServicosCliente() {
+        return listaServicosCliente;
     }
 
     public String getNome() {
@@ -103,17 +106,17 @@ public class Cliente {
     // Deletes
 
     public void removeProduto(Produto prod) {
-        listaProdutos.remove(prod);
+        listaProdutosCliente.remove(prod);
     }
 
     public void removeServico(Servico servico) {
-        listaServicos.remove(servico);
+        listaServicosCliente.remove(servico);
     }
 
     // Outros
 
     public boolean produtoExists(Produto prod) {
-        if (listaProdutos.indexOf(prod) != -1)
+        if (listaProdutosCliente.indexOf(prod) != -1)
             return true;
         else
             return false;
