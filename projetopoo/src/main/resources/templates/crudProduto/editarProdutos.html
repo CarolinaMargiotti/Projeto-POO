@@ -14,7 +14,7 @@
                 produtos</span></a><br />
 
 
-        <form action="#" th:action="@{//editar-unidade/{id}/editar-produto (id=${unidade.id})}" th:object="${produto}"
+        <form action="#" th:action="@{/editar-unidade/{id}/editar-produto (id=${unidade.id})}" th:object="${produto}"
             method="post">
             <label>ID</label><br>
             <input type="text" id="id" th:field="*{id}" readonly><br>
@@ -26,7 +26,7 @@
             <input type="text" id="cep" th:field="*{preco}"><br>
             <label>Dia Consumido</label><br>
             <input type="date" id="cep" th:field="*{diaConsumido}"><br>
-            <input type="submit" value="Update unidade" /><br>
+            <input type="submit" value="Atualizar produto" /><br>
         </form>
     </div>
 

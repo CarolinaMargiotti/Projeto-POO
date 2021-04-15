@@ -34,6 +34,7 @@ public class UnidadesController {
     @PostMapping("/cadastrar-unidade")
     public String paginaCadastro(Unidade u, String cep) {
         u.setCep(cep);
+        u.setUltimoIdProduto(0);
         ur.save(u);
         return "crudUnidade/cadastrarUnidade";
     }
@@ -55,7 +56,7 @@ public class UnidadesController {
     }
 
     @RequestMapping("/deletar-unidade/{id}")
-    public ModelAndView requestMethodName(@PathVariable("id") long id) {
+    public ModelAndView deletarUnidade(@PathVariable("id") long id) {
         Unidade u = ur.findById(id).get();
         ur.delete(u);
         return paginaListar();

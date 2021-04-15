@@ -17,15 +17,15 @@ import javax.persistence.OrderColumn;
 import com.jerso.projetopoo.model.cliente.Cliente;
 import com.jerso.projetopoo.model.cliente.Clientes;
 
-import org.hibernate.annotations.Index;
-import org.hibernate.annotations.IndexColumn;
-
 @Entity
 public class Unidade {
 
     @Id()
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column()
+    private Long ultimoIdProduto;
 
     @Column()
     private String cep;
@@ -69,6 +69,10 @@ public class Unidade {
         cliente.addCliente(c);
     }
 
+    public void setUltimoIdProduto(long id) {
+        this.ultimoIdProduto = id;
+    }
+
     // Getters
 
     public Long getId() {
@@ -91,6 +95,10 @@ public class Unidade {
         return cliente;
     }
 
+    public long getUltimoIdProduto() {
+        return this.ultimoIdProduto;
+    }
+
     // others
 
     public Produto getProdutoById(long id) {
@@ -103,11 +111,25 @@ public class Unidade {
     }
 
     public void saveProduto(Produto p) {
-        for (int i = 0; i <= listaProdutos.size(); i++) {
-            if (listaProdutos.get(i).getId() == p.getId()) {
-                listaProdutos.set(i, p);
+        if (!listaProdutos.contains(p)) {
+            for (int i = 0; i <= listaProdutos.size(); i++) {
+                if (listaProdutos.get(i).getId() == p.getId()) {
+                    listaProdutos.set(i, p);
+                }
             }
         }
+    }
+
+    public void deleteProduto(long id) {
+        for (int i = 0; i <= listaProdutos.size(); i++) {
+            if (listaProdutos.get(i).getId() == id) {
+                listaProdutos.remove(i);
+            }
+        }
+    }
+
+    public void a() {
+
     }
 
 }

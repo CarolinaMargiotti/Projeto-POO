@@ -14,30 +14,34 @@
         <a th:href="@{/listar-unidade}"><span>Voltar a Listagem de unidades</span></a><br />
         <a th:href="@{/cadastrar-unidade/{id}/cadastrar-produtos (id=${unidade.id})}"><span>Cadastro de
                 Produtos</span></a><br />
-
-
-        <table class="table" th:each="produto:${produtos}">
-            <thead>
+        <table class="table">
+            <thead class="thead-dark">
                 <tr>
                     <th scope="col">ID</th>
                     <th scope="col">Nome</th>
                     <th scope="col">Marca</th>
                     <th scope="col">Preço</th>
                     <th scope="col">Editar</th>
-                    <!--<th scope="col">Deletar</th>-->
+                    <th scope="col">Deletar</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr>
-                    <th scope="row" th:text="${produto.id}"></th>
-                    <td th:text="${produto.nome}"></td>
-                    <td th:text="${produto.marca}"></td>
-                    <td th:text="${produto.preco}"></td>
-                    <td><a
-                            th:href="@{/editar-unidade/{id}/editar-produto/{idProduto}(id=${unidade.id})(idProduto=${produto.id})}">Editar</a>
-                    </td>
-                </tr>
-            </tbody>
+
+            <div th:each="produto:${produtos}">
+                <tbody>
+                    <tr>
+                        <th scope="row" th:text="${produto.id}"></th>
+                        <td th:text="${produto.nome}"></td>
+                        <td th:text="${produto.marca}"></td>
+                        <td th:text="${produto.preco}"></td>
+                        <td><a
+                                th:href="@{/editar-unidade/{id}/editar-produto/{idProduto} (id=${unidade.id},idProduto=${produto.id})}">Editar</a>
+                        </td>
+                        <td><a
+                                th:href="@{/deletar-unidade/{id}/deletar-produto/{idProduto} (id=${unidade.id},idProduto=${produto.id})}">Deletar</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </div>
         </table>
     </div>
 

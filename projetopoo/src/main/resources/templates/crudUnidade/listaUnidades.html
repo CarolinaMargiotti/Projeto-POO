@@ -10,26 +10,28 @@
 <body>
     <a th:href="@{/cadastrar-unidade}"><span>Cadastro de unidades</span></a><br />
 
-    <thead class="thead-dark">
-        <tr>
-            <th scope="col">ID</th>
-            <th scope="col">CEP</th>
-            <th scope="col">Produtos</th>
-            <th scope="col">Editar</th>
-            <th scope="col">Deletar</th>
-        </tr>
-    </thead>
-
-    <table class="table" th:each="unidade:${unidades}">
-        <tbody>
+    <table class="table">
+        <thead class="thead-dark">
             <tr>
-                <th scope="row" th:text="${unidade.id}"></th>
-                <td th:text="${unidade.cep}"></td>
-                <td><a th:href="@{/listar-unidade/{id}/listar-produtos (id=${unidade.id})}">Lista produtos</a></td>
-                <td><a th:href="@{/editar-unidade/{id}(id=${unidade.id})}">Editar</a></td>
-                <td><a th:href="@{/deletar-unidade/{id}(id=${unidade.id})}">Deletar</a></td>
+                <th scope="col">ID</th>
+                <th scope="col">CEP</th>
+                <th scope="col">Produtos</th>
+                <th scope="col">Editar</th>
+                <th scope="col">Deletar</th>
             </tr>
-        </tbody>
+        </thead>
+
+        <div th:each="unidade:${unidades}">
+            <tbody>
+                <tr>
+                    <th scope="row" th:text="${unidade.id}"></th>
+                    <td th:text="${unidade.cep}"></td>
+                    <td><a th:href="@{/listar-unidade/{id}/listar-produtos (id=${unidade.id})}">Lista produtos</a></td>
+                    <td><a th:href="@{/editar-unidade/{id}(id=${unidade.id})}">Editar</a></td>
+                    <td><a th:href="@{/deletar-unidade/{id}(id=${unidade.id})}">Deletar</a></td>
+                </tr>
+            </tbody>
+        </div>
     </table>
 
     <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
