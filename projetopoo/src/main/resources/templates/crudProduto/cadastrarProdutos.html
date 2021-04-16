@@ -9,17 +9,28 @@
 
 <body th:object="${unidade}">
     <a th:href="@{/listar-unidade/{id}/listar-produtos (id=${unidade.id})}"><span>Listagem de unidades</span></a><br />
+
     <form th:action="@{/cadastrar-unidade/{id}/cadastrar-produtos (id=${unidade.id})}" method="post">
-        <div class="form-group">
-            <label for="exampleFormControlInput1">Nome</label><br>
-            <input type="text" name="nome" class="form-form-control form-control-lg"><br>
-            <label for="exampleFormControlInput1">Marca</label><br>
-            <input type="text" name="marca" class="form-form-control form-control-lg"><br>
-            <label for="exampleFormControlInput1">Preço</label><br>
-            <input type="text" name="preco" class="form-form-control form-control-lg"><br>
-            <input type="submit" /><br>
+        <div class="input-group flex-nowrap">
+            <div class="form-group">
+                <label for="exampleFormControlInput1">Nome</label><br>
+                <div class="input-group mb-3">
+                    <input name="nome" type="text" class="form-control">
+                </div>
+                <label for="exampleFormControlInput1">Marca</label><br>
+                <div class="input-group mb-3">
+                    <input name="marca" type="text" class="form-control">
+                </div>
+                <label for="exampleFormControlInput1">Preço</label><br>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">R$</span>
+                    <input name="preco" type="text" class="form-control">
+                </div>
+                <button class="btn btn-outline-secondary" type="submit">Cadastrar produto</button>
+            </div>
         </div>
     </form>
+
 
     <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
     <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>

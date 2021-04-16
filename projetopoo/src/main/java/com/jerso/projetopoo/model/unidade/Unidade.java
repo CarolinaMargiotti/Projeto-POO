@@ -28,6 +28,9 @@ public class Unidade {
     private Long ultimoIdProduto;
 
     @Column()
+    private Long ultimoIdServico;
+
+    @Column()
     private String cep;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = false)
@@ -73,6 +76,10 @@ public class Unidade {
         this.ultimoIdProduto = id;
     }
 
+    public void setUltimoIdServico(long id) {
+        this.ultimoIdServico = id;
+    }
+
     // Getters
 
     public Long getId() {
@@ -97,6 +104,10 @@ public class Unidade {
 
     public long getUltimoIdProduto() {
         return this.ultimoIdProduto;
+    }
+
+    public long getUltimoIdServico() {
+        return (ultimoIdServico == null) ? 0 : this.ultimoIdServico;
     }
 
     // others
@@ -128,8 +139,31 @@ public class Unidade {
         }
     }
 
-    public void a() {
+    public Servico getServicoById(long id) {
+        for (Servico servico : listaServicos) {
+            if (servico.getId() == id) {
+                return servico;
+            }
+        }
+        return null;
+    }
 
+    public void saveServico(Servico s) {
+        if (!listaServicos.contains(s)) {
+            for (int i = 0; i < listaServicos.size(); i++) {
+                if (listaServicos.get(i).getId() == s.getId()) {
+                    listaServicos.set(i, s);
+                }
+            }
+        }
+    }
+
+    public void deleteServico(long id) {
+        for (int i = 0; i < listaServicos.size(); i++) {
+            if (listaServicos.get(i).getId() == id) {
+                listaServicos.remove(i);
+            }
+        }
     }
 
 }

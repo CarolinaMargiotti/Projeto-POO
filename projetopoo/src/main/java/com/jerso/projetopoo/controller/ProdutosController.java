@@ -42,7 +42,7 @@ public class ProdutosController {
     public ModelAndView paginaCadastro(@PathVariable("id") long id, Produto p, String nome, String marca, float preco) {
         Unidade u = ur.findById(id).get();
         u.setUltimoIdProduto(u.getUltimoIdProduto() + 1);
-        p.setId(u.getUltimoIdProduto());
+        p.setId(u.getUltimoIdProduto() + 0);
         p.setNome(nome);
         p.setMarca(marca);
         p.setPreco(preco);

@@ -2,42 +2,42 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <title>Lista Produtos</title>
+    <title>Lista servicos</title>
     <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet" />
     <link th:href="@{/webjars/bootstrap/css/bootstrap-theme-min.css}" rel="stylesheet" />
 </head>
 
 <body>
     <div th:object=" ${unidade}">
-        <h1>Visualizando lista de produtos</h1>
+        <h1>Visualizando lista de Serviços</h1>
         <h2>Unidade ID [( ${id} )]</h2>
         <a th:href="@{/listar-unidade}"><span>Voltar a Listagem de unidades</span></a><br />
-        <a th:href="@{/cadastrar-unidade/{id}/cadastrar-produtos (id=${unidade.id})}"><span>Cadastro de
-                Produtos</span></a><br />
+        <a th:href="@{/cadastrar-unidade/{id}/cadastrar-servicos (id=${unidade.id})}"><span>Cadastro de
+                Serviços</span></a><br />
         <table class="table">
             <thead class="thead-dark">
                 <tr>
                     <th scope="col">ID</th>
                     <th scope="col">Nome</th>
-                    <th scope="col">Marca</th>
+                    <th scope="col">Genêro</th>
                     <th scope="col">Preço</th>
                     <th scope="col">Editar</th>
                     <th scope="col">Deletar</th>
                 </tr>
             </thead>
 
-            <div th:each="produto:${produtos}">
+            <div th:each="servico:${servicos}">
                 <tbody>
                     <tr>
-                        <th scope="row" th:text="${produto.id}"></th>
-                        <td th:text="${produto.nome}"></td>
-                        <td th:text="${produto.marca}"></td>
-                        <td><span th:text="${produto.preco}"></span> R$</td>
+                        <th scope="row" th:text="${servico.id}"></th>
+                        <td th:text="${servico.nome}"></td>
+                        <td th:text="${servico.genero}"></td>
+                        <td th:text="${servico.preco}"></td>
                         <td><a
-                                th:href="@{/editar-unidade/{id}/editar-produto/{idProduto} (id=${unidade.id},idProduto=${produto.id})}">Editar</a>
+                                th:href="@{/editar-unidade/{id}/editar-servico/{idservico} (id=${unidade.id},idservico=${servico.id})}">Editar</a>
                         </td>
                         <td><a
-                                th:href="@{/deletar-unidade/{id}/deletar-produto/{idProduto} (id=${unidade.id},idProduto=${produto.id})}">Deletar</a>
+                                th:href="@{/deletar-unidade/{id}/deletar-servico/{idservico} (id=${unidade.id},idservico=${servico.id})}">Deletar</a>
                         </td>
                     </tr>
                 </tbody>

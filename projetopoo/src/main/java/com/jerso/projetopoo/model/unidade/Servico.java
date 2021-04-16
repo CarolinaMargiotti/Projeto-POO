@@ -16,11 +16,8 @@ public class Servico {
     private String nome;
     @Column
     private String genero;
-
-    public Servico(String nome, String genero) {
-        this.nome = nome;
-        this.genero = genero;
-    }
+    @Column
+    private float preco;
 
     // Setters
 
@@ -30,6 +27,10 @@ public class Servico {
 
     public void setGenero(String genero) {
         this.genero = genero;
+    }
+
+    public void setPreco(float preco) {
+        this.preco = preco;
     }
 
     public void setId(Long id) {
@@ -48,5 +49,9 @@ public class Servico {
 
     public Long getId() {
         return id;
+    }
+
+    public float getPreco() {
+        return this.preco;
     }
 }
