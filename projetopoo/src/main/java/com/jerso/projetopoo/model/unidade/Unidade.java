@@ -33,6 +33,9 @@ public class Unidade {
     @Column()
     private String cep;
 
+    @Column()
+    private String nome;
+
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = false)
     @JoinColumn(name = "idUnidade", nullable = true)
     @OrderColumn(name = "Ordem")
@@ -51,11 +54,16 @@ public class Unidade {
         cliente.removeCliente(c);
     }
 
+    // Setters
+
     public void setId(Long id) {
         this.id = id;
     }
 
-    // Setters
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
     public void setCep(String cep) {
         this.cep = cep;
     }
@@ -69,7 +77,7 @@ public class Unidade {
     }
 
     public void setCliente(Cliente c) {
-        cliente.addCliente(c);
+        cliente.setListaClientes(c);
     }
 
     public void setUltimoIdProduto(long id) {
@@ -84,6 +92,10 @@ public class Unidade {
 
     public Long getId() {
         return id;
+    }
+
+    public String getNome() {
+        return nome;
     }
 
     public String getCep() {

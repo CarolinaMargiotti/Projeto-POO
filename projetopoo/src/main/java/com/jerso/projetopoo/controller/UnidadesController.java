@@ -32,8 +32,9 @@ public class UnidadesController {
     }
 
     @PostMapping("/cadastrar-unidade")
-    public String paginaCadastro(Unidade u, String cep) {
+    public String paginaCadastro(Unidade u, String cep, String nome) {
         u.setCep(cep);
+        u.setNome(nome);
         u.setUltimoIdProduto(0);
         ur.save(u);
         return "crudUnidade/cadastrarUnidade";

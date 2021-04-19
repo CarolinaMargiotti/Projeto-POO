@@ -24,12 +24,12 @@ public class Clientes {
     @Column(name = "listaClientes")
     private List<Cliente> listaClientes;
 
-    public Clientes() {
-
+    public void setListaClientes(Cliente cliente) {
+        listaClientes.add(cliente);
     }
 
-    public void addCliente(Cliente cliente) {
-        listaClientes.add(cliente);
+    public List<Cliente> getListaClientes() {
+        return listaClientes;
     }
 
     public void removeCliente(Cliente cliente) {

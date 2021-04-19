@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Lista clientes</title>
+    <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet" />
+    <link th:href="@{/webjars/bootstrap/css/bootstrap-theme-min.css}" rel="stylesheet" />
+</head>
+
+<body>
+    <div th:object=" ${unidade}">
+        <h1>Visualizando lista de clientes</h1>
+        <h2>Unidade ID [( ${id} )]</h2>
+        <a th:href="@{/listar-unidade}"><span>Voltar a Listagem de unidades</span></a><br />
+        <a th:href="@{/cadastrar-unidade/{id}/cadastrar-clientes (id=${unidade.id})}"><span>Cadastro de
+                clientes</span></a><br />
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Genero</th>
+                    <th scope="col">Data nascimento</th>
+                    <th scope="col">Telefone</th>
+                    <th scope="col">Lista Produto</th>
+                    <th scope="col">Lista Servicos</th>
+                    <th scope="col">Editar</th>
+                    <th scope="col">Deletar</th>
+                </tr>
+            </thead>
+
+            <div th:each="cliente:${clientes}">
+                <tbody>
+                    <tr>
+                        <th scope="row" th:text="${cliente.id}"></th>
+                        <td th:text="${cliente.nome}"></td>
+                        <td th:text="${cliente.genero}"></td>
+                        <td><span th:text="${cliente.dataNascimento}"></span></td>
+                        <td th:text="${cliente.tel}"></td>
+                        <td><a
+                                th:href="@{/editar-unidade/{id}/editar-cliente/{idcliente} (id=${unidade.id},idcliente=${cliente.id})}">Lista
+                                Produtos</a>
+                        </td>
+                        <td><a
+                                th:href="@{/editar-unidade/{id}/editar-cliente/{idcliente} (id=${unidade.id},idcliente=${cliente.id})}">Lista
+                                Serviços</a>
+                        </td>
+                        <td><a
+                                th:href="@{/editar-unidade/{id}/editar-cliente/{idcliente} (id=${unidade.id},idcliente=${cliente.id})}">Editar</a>
+                        </td>
+                        <td><a
+                                th:href="@{/deletar-unidade/{id}/deletar-cliente/{idcliente} (id=${unidade.id},idcliente=${cliente.id})}">Deletar</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </div>
+        </table>
+    </div>
+
+    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</body>
+
+</html>
