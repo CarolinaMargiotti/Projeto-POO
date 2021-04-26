@@ -7,30 +7,37 @@
     <link th:href="@{/webjars/bootstrap/css/bootstrap-theme-min.css}" rel="stylesheet" />
 </head>
 
-<body>
-    <form>
+<body onload="esconder()">
+    <a th:href="@{/index}"><span>Index</span></a><br />
+    <form th:action="@{/cadastrar-clientes}" method="post">
         <div class="input-group flex-nowrap">
             <div class="form-group">
                 <label for="exampleFormControlInput1">Nome</label><br>
                 <div class="input-group mb-3">
-                    <input name="nome" type="text" class="form-control">
-                </div>
-                <label for="exampleFormControlInput1">Genero</label><br>
-                <div class="input-group mb-3">
-                    <input name="marca" type="text" class="form-control">
-                </div>
-                <label for="exampleFormControlInput1">Data nascimento</label><br>
-                <div class="input-group mb-3">
-                    <input type="datetime-local" id="birthdaytime" name="dataHora">
+                    <input name="nome" path="nome" type="text" class="form-control">
                 </div>
 
+                <label for="exampleFormControlInput1">Genero</label><br>
+                <div class="input-group mb-3">
+                    <input name="genero" type="text" class="form-control">
+                </div>
+
+                <label for="exampleFormControlInput1">Data de nascimento</label><br>
+                <div class="input-group mb-3">
+                    <input name="dataNascimento" type="date" id="birthdaytime">
+                </div>
+
+                <label for="exampleFormControlInput1" visiblity="false">Selecione uma unidade</label><br>
+                <input name="id" id="idUnidade" style="display: none;">
                 <div class="form-group blu-margin">
-                    <select class="form-control" th:field="${unidades}">
+                    <select class="form-control" th:field="${unidades}" onchange="setUnidadeId(value)">
                         <option value="0">Selecione unidade</option>
                         <option th:each="unidade : ${unidades}" th:value="${unidade.id}" th:text="${unidade.nome}">
                         </option>
                     </select>
                 </div>
+
+                <label for="exampleFormControlInput1">Telefone</label><br>
                 <div class="input-group mb-3">
                     <input name="tel" type="text" class="form-control">
                 </div>
@@ -39,6 +46,25 @@
         </div>
     </form>
 
+
+    <script>
+        function esconder() {
+            document.getElementById("dn").style.visibility = false;
+            document.getElementById("idUnidade").style.visibility = false;
+        }
+
+        function forceDate(value) {
+            d = new Date(value);
+            document.getElementById("dn").value = d;
+        }
+
+        function setUnidadeId(value) {
+            document.getElementById("idUnidade").value = value;
+        }
+
+
+
+    </script>
 
     <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
     <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>

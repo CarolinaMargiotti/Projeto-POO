@@ -3,6 +3,7 @@ package com.jerso.projetopoo.model.cliente;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.persistence.CascadeType;
 import javax.persistence.CollectionTable;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
@@ -11,6 +12,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OrderColumn;
 
 @Entity
 public class Clientes {
@@ -19,12 +22,13 @@ public class Clientes {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ElementCollection
-    @CollectionTable(name = "listaClientes", joinColumns = @JoinColumn(name = "id"))
-    @Column(name = "listaClientes")
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = false)
+    @JoinColumn(name = "id", nullable = true)
+    @OrderColumn(name = "Ordem")
     private List<Cliente> listaClientes;
 
     public void setListaClientes(Cliente cliente) {
+        System.out.println("\n\n\n" + cliente.getNome() + "\n\n\n");
         listaClientes.add(cliente);
     }
 

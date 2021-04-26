@@ -17,6 +17,8 @@ import javax.persistence.OrderColumn;
 import com.jerso.projetopoo.model.cliente.Cliente;
 import com.jerso.projetopoo.model.cliente.Clientes;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 @Entity
 public class Unidade {
 
@@ -77,6 +79,7 @@ public class Unidade {
     }
 
     public void setCliente(Cliente c) {
+        System.out.println(cliente);
         cliente.setListaClientes(c);
     }
 

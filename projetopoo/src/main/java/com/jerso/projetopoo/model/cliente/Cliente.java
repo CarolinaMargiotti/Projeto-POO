@@ -2,6 +2,7 @@ package com.jerso.projetopoo.model.cliente;
 
 import java.time.LocalDate;
 import java.time.Period;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -28,7 +29,7 @@ public class Cliente {
     @Column
     private String genero;
     @Column
-    private LocalDate dataNascimento;
+    private String dataNascimento;
     @Column
     private String tel;
 
@@ -42,7 +43,7 @@ public class Cliente {
     @OrderColumn(name = "Ordem")
     private List<Servico> listaServicosCliente;
 
-    public Cliente(String nome, String genero, LocalDate dataNascimento, String tel) {
+    public Cliente(String nome, String genero, String dataNascimento, String tel) {
         this.nome = nome;
         this.genero = genero;
         this.dataNascimento = dataNascimento;
@@ -67,7 +68,7 @@ public class Cliente {
         this.genero = genero;
     }
 
-    public void setDataNascimento(LocalDate dataNascimento) {
+    public void setDataNascimento(String dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
 
@@ -93,11 +94,11 @@ public class Cliente {
         return genero;
     }
 
-    public LocalDate getDataNascimento() {
+    public String getDataNascimento() {
         return dataNascimento;
     }
 
-    public String getTelefone() {
+    public String getTel() {
         return this.tel;
     }
 
@@ -121,7 +122,8 @@ public class Cliente {
     }
 
     public int getIdade() {
-        return Period.between(dataNascimento, LocalDate.now()).getYears();
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        return Period.between(LocalDate.parse(dataNascimento, dateTimeFormatter), LocalDate.now()).getYears();
     }
 
 }

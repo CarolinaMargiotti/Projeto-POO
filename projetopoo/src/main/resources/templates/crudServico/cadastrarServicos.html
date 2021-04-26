@@ -8,6 +8,7 @@
 </head>
 
 <body th:object="${unidade}">
+    <a th:href="@{/index}"><span>Index</span></a><br />
     <a th:href="@{/listar-unidade/{id}/listar-servicos (id=${unidade.id})}"><span>Listagem de unidades</span></a><br />
     <form th:action="@{/cadastrar-unidade/{id}/cadastrar-servicos (id=${unidade.id})}" method="post">
         <div class="form-group">

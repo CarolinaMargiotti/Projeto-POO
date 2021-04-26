@@ -8,6 +8,7 @@
 </head>
 
 <body>
+    <a th:href="@{/index}"><span>Index</span></a><br />
     <a th:href="@{/listar-unidade}"><span>Listagem de unidades</span></a><br />
 
     <form action="#" th:action="@{/editar-unidade}" th:object="${unidade}" method="post">

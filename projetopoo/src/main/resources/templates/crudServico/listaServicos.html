@@ -11,6 +11,7 @@
     <div th:object=" ${unidade}">
         <h1>Visualizando lista de Serviços</h1>
         <h2>Unidade ID [( ${id} )]</h2>
+        <a th:href="@{/index}"><span>Index</span></a><br />
         <a th:href="@{/listar-unidade}"><span>Voltar a Listagem de unidades</span></a><br />
         <a th:href="@{/cadastrar-unidade/{id}/cadastrar-servicos (id=${unidade.id})}"><span>Cadastro de
                 Serviços</span></a><br />

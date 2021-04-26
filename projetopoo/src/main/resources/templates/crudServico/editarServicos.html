@@ -10,6 +10,7 @@
 <body>
 
     <div th:object="${unidade}">
+        <a th:href="@{/index}"><span>Index</span></a><br />
         <a th:href="@{/listar-unidade/{id}/listar-servicos (id=${unidade.id})}"><span>Listagem de
                 serviços</span></a><br />
 
