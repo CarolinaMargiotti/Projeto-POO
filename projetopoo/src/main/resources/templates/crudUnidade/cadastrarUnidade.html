@@ -8,16 +8,44 @@
 </head>
 
 <body>
-    <a th:href="@{/index}"><span>Index</span></a><br />
-    <a th:href="@{/listar-unidade}"><span>Listagem de unidades</span></a><br />
-    <form th:action="@{/cadastrar-unidade}" method="post">
-        <div class="form-group">
-            <label for="exampleFormControlInput1">CEP</label><br>
-            <input type="text" name="cep" class="form-form-control form-control-lg" placeholder="57042-010"><br>
-            <label for="exampleFormControlInput1">Nome</label><br>
-            <input type="text" name="nome" class="form-form-control form-control-lg"><br>
-            <input type="submit" /><br>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" th:href="@{/index}">Index</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/listar-unidade}">Listagem de unidades</a>
+                </li>
+            </ul>
         </div>
+    </nav>
+
+
+    <form th:action="@{/cadastrar-unidade}" method="post">
+        <div class="input-group mb-3">
+            <div class="container">
+                <br>
+                <div class="row">
+                    <div class="col-6">
+                        <label for="basic-url">CEP</label><br>
+                        <input type="text" name="cep" class="form-control" placeholder="xxxxx-xx" aria-label="Cep"
+                            aria-describedby="basic-addon1"><br>
+
+                        <label for="basic-url">Nome</label><br>
+                        <input type="text" name="nome" class="form-control" aria-label="Vini"
+                            aria-describedby="basic-addon1"><br>
+                        <button class="btn btn-outline-secondary" type="submit" id="inputGroupFileAddon04">Cadastrar
+                            Unidade</button>
+                    </div>
+                </div>
+                <div class="col-6">
+                </div>
+            </div>
+        </div>
+
     </form>
 
     <script th:src="@{/webjars/jquery/jquery.min.js}"></script>

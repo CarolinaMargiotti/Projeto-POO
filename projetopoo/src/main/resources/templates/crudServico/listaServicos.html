@@ -9,12 +9,33 @@
 
 <body>
     <div th:object=" ${unidade}">
-        <h1>Visualizando lista de Serviços</h1>
-        <h2>Unidade ID [( ${id} )]</h2>
-        <a th:href="@{/index}"><span>Index</span></a><br />
-        <a th:href="@{/listar-unidade}"><span>Voltar a Listagem de unidades</span></a><br />
-        <a th:href="@{/cadastrar-unidade/{id}/cadastrar-servicos (id=${unidade.id})}"><span>Cadastro de
-                Serviços</span></a><br />
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" th:href="@{/index}">Index</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/listar-unidade}">Voltar a Listagem de unidades</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link"
+                            th:href="@{/cadastrar-unidade/{id}/cadastrar-servicos (id=${unidade.id})}">Cadastro de
+                            Serviços</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <label for="basic-url"> Visualizando lista de Serviços</label><br>
+        <label for="basic-url"> Unidade ID [( ${id} )]</label><br>
+
+
         <table class="table">
             <thead class="thead-dark">
                 <tr>
@@ -33,7 +54,7 @@
                         <th scope="row" th:text="${servico.id}"></th>
                         <td th:text="${servico.nome}"></td>
                         <td th:text="${servico.genero}"></td>
-                        <td th:text="${servico.preco}"></td>
+                        <td>R$ <span th:text="${servico.preco}"></span></td>
                         <td><a
                                 th:href="@{/editar-unidade/{id}/editar-servico/{idservico} (id=${unidade.id},idservico=${servico.id})}">Editar</a>
                         </td>

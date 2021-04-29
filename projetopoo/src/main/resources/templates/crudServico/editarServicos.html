@@ -10,14 +10,58 @@
 <body>
 
     <div th:object="${unidade}">
-        <a th:href="@{/index}"><span>Index</span></a><br />
-        <a th:href="@{/listar-unidade/{id}/listar-servicos (id=${unidade.id})}"><span>Listagem de
-                serviços</span></a><br />
-
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" th:href="@{/index}">Index</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link"
+                            th:href="@{/listar-unidade/{id}/listar-servicos (id=${unidade.id})}">Listagem de
+                            Serviços</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
 
         <form action="#" th:action="@{/editar-unidade/{id}/editar-servico (id=${unidade.id})}" th:object="${servico}"
             method="post">
-            <label>ID</label><br>
+
+            <div class="input-group mb-3">
+                <div class="container">
+                    <br>
+                    <div class="row">
+                        <div class="col-6">
+                            <label for="basic-url">ID</label><br>
+                            <input type="text" name="id" class="form-control" th:field="*{id}" aria-label="Id"
+                                aria-describedby="basic-addon1" readonly><br>
+
+                            <label for="basic-url">Nome</label><br>
+                            <input type="text" name="nome" th:field="*{nome}" class="form-control" aria-label="Vini"
+                                aria-describedby="basic-addon1"><br>
+
+                            <label for="basic-url">Genêro</label><br>
+                            <input type="text" name="genero" th:field="*{genero}" class="form-control" aria-label="Vini"
+                                aria-describedby="basic-addon1"><br>
+
+                            <label for="basic-url">Preço</label><br>
+                            <input type="text" name="genero" th:field="*{preco}" class="form-control" aria-label="Vini"
+                                aria-describedby="basic-addon1"><br>
+
+                            <button class="btn btn-outline-secondary" type="submit" id="inputGroupFileAddon04">Atualizar
+                                Serviço</button>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- <label>ID</label><br>
             <input type="text" id="id" th:field="*{id}" readonly><br>
             <label>Nome</label><br>
             <input type="text" id="cep" th:field="*{nome}"><br>
@@ -25,7 +69,7 @@
             <input type="text" id="cep" th:field="*{genero}"><br>
             <label>Preço</label><br>
             <input type="text" id="cep" th:field="*{preco}"><br>
-            <input type="submit" value="Atualizar servico" /><br>
+            <input type="submit" value="Atualizar servico" /><br>-->
         </form>
     </div>
 

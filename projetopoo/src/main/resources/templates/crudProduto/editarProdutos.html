@@ -10,24 +10,71 @@
 <body>
 
     <div th:object="${unidade}">
-        <a th:href="@{/index}"><span>Index</span></a><br />
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" th:href="@{/index}">Index</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link"
+                            th:href="@{/listar-unidade/{id}/listar-produtos (id=${unidade.id})}">Listagem de
+                            Produtos</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+
+        <!--<a th:href="@{/index}"><span>Index</span></a><br />
         <a th:href="@{/listar-unidade/{id}/listar-produtos (id=${unidade.id})}"><span>Listagem de
-                produtos</span></a><br />
+                produtos</span></a><br />-->
 
 
         <form action="#" th:action="@{/editar-unidade/{id}/editar-produto (id=${unidade.id})}" th:object="${produto}"
             method="post">
-            <label>ID</label><br>
-            <input type="text" id="id" th:field="*{id}" readonly><br>
-            <label>Nome</label><br>
-            <input type="text" id="cep" th:field="*{nome}"><br>
-            <label>Marca</label><br>
-            <input type="text" id="cep" th:field="*{marca}"><br>
-            <label>Preço</label><br>
-            <input type="text" id="cep" th:field="*{preco}"><br>
-            <label>Dia Consumido</label><br>
-            <input type="date" id="cep" th:field="*{diaConsumido}"><br>
-            <input type="submit" value="Atualizar produto" /><br>
+
+            <div class="input-group mb-3">
+                <div class="container">
+                    <br>
+                    <div class="row">
+                        <div class="col-6">
+
+                            <label for="basic-url">Id</label><br>
+                            <input type="text" name="id" id="id" th:field="*{id}" class="form-control" aria-label="Vini"
+                                aria-describedby="basic-addon1"><br>
+
+                            <label for="basic-url">Nome</label><br>
+                            <input type="text" name="nome" id="nome" th:field="*{nome}" class="form-control"
+                                aria-label="Vini" aria-describedby="basic-addon1"><br>
+
+                            <label for="basic-url">Marca</label><br>
+                            <input type="text" name="marca" id="marca" th:field="*{marca}" class="form-control"
+                                aria-label="Vini" aria-describedby="basic-addon1"><br>
+
+                            <label for="basic-url">Preço</label><br>
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">R$</span><input type="text" th:field="*{preco}"
+                                    id="preco" name="preco" class="form-control" aria-label="Vini"
+                                    aria-describedby="basic-addon1">
+                            </div>
+
+                            <br>
+                            <label for="basic-url">Dia Consumido</label><br>
+                            <input type="date" id="cep" class="form-control" th:field="*{diaConsumido}"><br>
+
+                            <button class="btn btn-outline-secondary" type="submit" id="inputGroupFileAddon04">Cadastrar
+                                Produto</button>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                    </div>
+                </div>
+            </div>
+
         </form>
     </div>
 
