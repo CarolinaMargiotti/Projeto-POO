@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <title>Cadastro Produto</title>
+    <title>Cadastro Clientes</title>
     <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet" />
     <link th:href="@{/webjars/bootstrap/css/bootstrap-theme-min.css}" rel="stylesheet" />
 </head>
@@ -70,42 +70,6 @@
                 </div>
             </div>
         </div>
-
-
-        <!--<div class="input-group flex-nowrap">
-            <div class="form-group">
-                <label for="exampleFormControlInput1">Nome</label><br>
-                <div class="input-group mb-3">
-                    <input name="nome" path="nome" type="text" class="form-control">
-                </div>
-
-                <label for="exampleFormControlInput1">Genero</label><br>
-                <div class="input-group mb-3">
-                    <input name="genero" type="text" class="form-control">
-                </div>
-
-                <label for="exampleFormControlInput1">Data de nascimento</label><br>
-                <div class="input-group mb-3">
-                    <input name="dataNascimento" type="date" id="birthdaytime">
-                </div>
-
-                <label for="exampleFormControlInput1" visiblity="false">Selecione uma unidade</label><br>
-                <input name="id" id="idUnidade" style="display: none;">
-                <div class="form-group blu-margin">
-                    <select class="form-control" th:field="${unidades}" onchange="setUnidadeId(value)">
-                        <option value="0">Selecione unidade</option>
-                        <option th:each="unidade : ${unidades}" th:value="${unidade.id}" th:text="${unidade.nome}">
-                        </option>
-                    </select>
-                </div>
-
-                <label for="exampleFormControlInput1">Telefone</label><br>
-                <div class="input-group mb-3">
-                    <input name="tel" type="text" class="form-control">
-                </div>
-                <button class="btn btn-outline-secondary" type="submit">Cadastrar cliente</button>
-            </div>
-        </div>-->
     </form>
 
 
